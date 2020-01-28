@@ -1,0 +1,36 @@
+GET http://localhost:3000/jokes
+
+###
+GET http://localhost:3000/jokes/5e3064da52ba2a245c94cd7e
+
+###
+POST http://localhost:3000/jokes
+Content-Type: application/json
+
+{
+    "title": "Alle børnene",
+    "jokeText": "Alle børnene hoppede ned i blenderen undtagen karlsmart han trykkede på start"
+}
+
+###
+
+POST http://localhost:3000/jokes
+Content-Type: application/json
+
+{
+  "title": "Haj med dig",
+  "jokeText": "Hvad kalder man en indbagt haj
+– haj med dej"
+}
+
+### 
+DELETE http://localhost:3000/jokes/5e30361823c931f0648a18ce
+
+###
+PATCH http://localhost:3000/jokes/5e3042a148393319f96f4a5f
+Content-Type: application/json
+
+{
+    "title": "Ny titel"
+}
+
