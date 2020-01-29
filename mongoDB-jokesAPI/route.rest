@@ -8,23 +8,16 @@ POST http://localhost:3000/jokes
 Content-Type: application/json
 
 {
-    "title": "Alle børnene",
-    "jokeText": "Alle børnene hoppede ned i blenderen undtagen karlsmart han trykkede på start"
+    "title": "En dværg kommer ind på et værtshus.",
+    "jokeText": "Spiller du kort? spørger en af gæsterne. Nej. Sådan er jeg bare født."
 }
 
-###
 
-POST http://localhost:3000/jokes
-Content-Type: application/json
 
-{
-  "title": "Haj med dig",
-  "jokeText": "Hvad kalder man en indbagt haj
-– haj med dej"
-}
+
 
 ### 
-DELETE http://localhost:3000/jokes/5e30361823c931f0648a18ce
+DELETE http://localhost:3000/jokes/5e31fca8942e036a94bb599f
 
 ###
 PATCH http://localhost:3000/jokes/5e3042a148393319f96f4a5f
