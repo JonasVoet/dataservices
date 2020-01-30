@@ -1,17 +1,24 @@
 import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink, withRouter } from 'react-router-dom';
 
-const Navbar = (props) => {
+const Navigation = (props) => {
     return (
-        <div className="navbar">
+        <Navbar className="justify-content-end" variant="light" expand={"xl"}>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto pr-2">
+                    <NavLink className="nav-link" exact to="/">Forside</NavLink>
+                    <NavLink className="nav-link" to="/jokes">Jokes</NavLink>
+                    <NavLink className="nav-link" to="/jokeadmin">JokeAdmin</NavLink>
 
-            <li><NavLink exact to="/">Home</NavLink></li>
-            <li><NavLink to="/jokes">Jokes</NavLink></li>
+                </Nav>
+            </Navbar.Collapse>
+        </Navbar>
 
-
-        </div>
     )
+
 }
 
 
-export default withRouter(Navbar);
+export default withRouter(Navigation);

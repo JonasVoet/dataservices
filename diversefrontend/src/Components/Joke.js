@@ -18,9 +18,9 @@ const Joke = (props) => {
 
     const oneJoke = joke ? (
         <div className="post">
-            <h4 className="center">{joke.title}</h4>
-            <p>{joke.jokeText}</p>
-            <p>Dato: {joke.jokeDate}</p>
+            <h4 className="text-center">{joke.title}</h4>
+            <p className="text-center">{joke.jokeText}</p>
+            <p className="text-center">Dato: {joke.jokeDate}</p>
 
         </div>
     ) : (
@@ -33,7 +33,7 @@ const Joke = (props) => {
 
     return (
         <div className="container">
-            <h1>Joke</h1>
+
             {oneJoke}
         </div>
     )

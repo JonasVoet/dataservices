@@ -23,7 +23,7 @@ const Jokes = () => {
 
                     <div className="content">
                         <Link to={'/' + joke.id}>
-                            <span className="card-title red-text">{joke.title}</span>
+                            <h3>{joke.title}</h3>
                         </Link>
 
                         <p>{joke.jokeText}</p>
@@ -41,8 +41,8 @@ const Jokes = () => {
 
     return (
         <div>
-            <div className="container home">
-                <h1 className="center">Jokes</h1>
+            <div className="container">
+                <h1 className="text-center">Jokes</h1>
                 {jokeList}
             </div>
         </div>
