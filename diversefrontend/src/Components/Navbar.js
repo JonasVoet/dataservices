@@ -10,7 +10,7 @@ const Navigation = (props) => {
                 <Nav className="mr-auto pr-2">
                     <NavLink className="nav-link" exact to="/">Forside</NavLink>
                     <NavLink className="nav-link" to="/jokes">Jokes</NavLink>
-                    <NavLink className="nav-link" to="/jokeadmin">JokeAdmin</NavLink>
+                    <NavLink className="nav-link" to="/jokeadmin">Admin</NavLink>
 
                 </Nav>
             </Navbar.Collapse>

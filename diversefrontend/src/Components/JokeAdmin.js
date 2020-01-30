@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const JokeAdmin = () => {
 
@@ -20,35 +20,23 @@ const JokeAdmin = () => {
         jokes.map(joke => {
             return (
 
-                <div className="container" key={joke.id}>
+              
 
-                    <div className="row">
+                <tbody key={joke.id}>
 
-                        <div className="col-lg-3">
-
-                            <p className="card-title red-text">{joke._id}</p>
-
-                        </div>
-
-                        <div className="col-lg-3">
-
-                            <p className="card-title red-text">{joke.title}</p>
-
-                        </div>
-
-                        <div className="col-lg-3">
-
-                            <p className="card-title red-text">{joke.jokeText}</p>
-
-                        </div>
-
-                        <i className="fas fa-edit"></i>
-                        <i className="fas fa-trash-alt"></i>
+                
+     <tr>
+      <th scope="row">{joke._id}</th>
+      <td>{joke.title}</td>
+       <td>{joke.jokeText}</td>
+       <td><i className="fas fa-pencil-alt"></i></td>
+       <td><i className="fas fa-minus-circle"></i></td>
+     
+    </tr>
 
 
-                    </div>
-
-                </div>
+                </tbody>
+              
 
             )
         })
@@ -62,41 +50,31 @@ const JokeAdmin = () => {
     return (
         <div className="container">
 
-            <h1 className="text-center mb-5">Jokes Admin</h1>
+            <h1 className="text-center mb-5">ADMIN</h1>
 
-            <div className="row">
-                <div className="col-lg-3">
-                    <h2>ID</h2>
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Overskrift</th>
+      <th scope="col">Joketekt</th>
+      <th scope="col">Ret</th>
+      <th scope="col">Slet</th>
+    </tr>
 
-                    <div className="row">
-                        <i class="fas fa-plus-circle"></i>
-                        <p>Opret ny</p>
-                    </div>
+    <tr>
+    <th scope="col"><i className="fas fa-plus-circle"></i>Opret Ny</th>
+    </tr>
+  </thead>
 
+  {/* <tbody> */}
+  {jokeList}
 
+  {/* </tbody> */}
+  
+</table>
 
-
-                </div>
-
-                <div className="col-lg-3">
-                    <h2>Overskrift</h2>
-
-                </div>
-
-                <div className="col-lg-3">
-                    <h2>JokeTekst</h2>
-
-                </div>
-
-                <div className="col-lg-3 d-flex">
-                    <h2>Ret</h2>
-                    <h2>Slet</h2>
-
-                </div>
-
-            </div>
-
-            {jokeList}
+            
 
         </div>
     )
