@@ -22,9 +22,9 @@ const Home = () => {
 
                 <div className="container" key={joke.id}>
 
-                    <div className="content">
+                    <div className="content text-center">
                         <Link to={'/' + joke._id}>
-                            <span className="card-title red-text">{joke.title}</span>
+                            <h3 className="card-title red-text">{joke.title}</h3>
                         </Link>
 
                     </div>
@@ -38,8 +38,8 @@ const Home = () => {
 
     return (
         <div>
-            <div className="container home">
-                <h1 className="center">Top 10 Jokes</h1>
+            <div className="container">
+                <h1 className="text-center mb-5">Top 10 Jokes</h1>
                 {jokeList}
             </div>
         </div>
