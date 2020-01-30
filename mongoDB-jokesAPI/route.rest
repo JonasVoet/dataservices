@@ -8,11 +8,9 @@ POST http://localhost:3000/jokes
 Content-Type: application/json
 
 {
-    "title": "En dværg kommer ind på et værtshus.",
-    "jokeText": "Spiller du kort? spørger en af gæsterne. Nej. Sådan er jeg bare født."
+    "title": "En mand bliver forvandlet til en måge.",
+    "jokeText": "Mågen møder en blondine og siger jeg tror vi er tvillinger."
 }
-
-
 
 
 

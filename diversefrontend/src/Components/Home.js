@@ -25,6 +25,7 @@ const Home = () => {
                     <div className="content">
                         <Link to={'/' + joke._id}>
                             <span className="card-title red-text">{joke.title}</span>
+                            {/* <p>{joke._id}</p> */}
                         </Link>
 
                     </div>
