@@ -1,13 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#nav {
+  background-color: #1F2024;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+div.dropdown-menu.show {
+  background-color: #1F2024;
+}
+
+div.dropdown-menu.show a:hover {
+  color: rgb(243, 243, 243) !important;
+  background-color: #1F2024;
+}
+
+
+a.nav-link {
+  font-size: 1.3em;
+  margin-right: 1rem;
+  color: white !important;
+}
+
+.jumbotron {
+  margin-top: 2rem;
+  background: url(./images/jumbo.png);
+  height: 30vh;
+  background-repeat: no-repeat;
+}
+
+span {
+  display: none;
+}
+
+h5.card-title {
+  color: black;
+}
+
+th.heading {
+  font-size: 1.2em;
+}
+
+i {
+  font-size: 1.2em;
+}
+
+i.fas.fa-minus-circle {
+  color: red;
+}
+
+i.fas.fa-plus-circle {
+  color: green;
 }

@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const Joke = (props) => {
 
     const [joke, setJokes] = useState({});
+    const { joke_id } = useParams();
 
     useEffect(() => {
-        let id = props.match.params.joke_id;
-        axios.get('http://localhost:3000/jokes/' + id)
+
+        axios.get('http://localhost:3000/jokes/' + joke_id)
             .then(res => {
                 console.log(res);
                 setJokes(res.data);
 
             });
-    }, [])
+    }, [joke_id])
 
 
     const oneJoke = joke ? (
-        <div className="post">
-            <h4 className="text-center">{joke.title}</h4>
-            <p className="text-center">{joke.jokeText}</p>
-            <p className="text-center">Dato: {joke.jokeDate}</p>
-
+        <div className="card mt-5">
+            <div className="card-body text-center">
+                <h4 className="card-title">{joke.title}</h4>
+                <p className="card-text">{joke.jokeText}</p>
+                <p>Dato: {new Date(joke.jokeDate).toLocaleString()}</p>
+            </div>
         </div>
     ) : (
             <div className="center">Loading Joke...</div>

@@ -6,37 +6,55 @@ const JokeAdmin = () => {
 
     const [jokes, setJokes] = useState({});
 
+
     useEffect(() => {
+
+        fetchData();
+
+    }, []);
+
+    const fetchData = () => {
+
         axios.get('http://localhost:3000/jokes')
             .then(res => {
                 console.log(res);
                 setJokes(res.data)
 
-            })
-    }, [])
+            });
+    }
+
+    const handleDelete = (id) => {
+
+        if (window.confirm('Sikker på du vil slette joken!')) {
+
+            axios.delete('http://localhost:3000/jokes/' + id)
+                .then(res => {
+                    console.log(res);
+
+                    fetchData();
+
+                });
+        }
+    }
 
 
     const jokeList = jokes.length ? (
         jokes.map(joke => {
             return (
 
-              
 
                 <tbody key={joke.id}>
 
-                
-     <tr>
-      <th scope="row">{joke._id}</th>
-      <td>{joke.title}</td>
-       <td>{joke.jokeText}</td>
-       <td><i className="fas fa-pencil-alt"></i></td>
-       <td><i className="fas fa-minus-circle"></i></td>
-     
-    </tr>
 
+                    <tr>
+                        <th scope="row">{joke._id}</th>
+                        <td>{joke.title}</td>
+                        <td>{joke.jokeText}</td>
+                        <td><Link to={`/ret/${joke._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
+                        <td><i onClick={() => handleDelete(joke._id)} className="fas fa-minus-circle"></i></td>
 
+                    </tr>
                 </tbody>
-              
 
             )
         })
@@ -44,37 +62,34 @@ const JokeAdmin = () => {
             <div className="center">Ingen jokes at vise</div>
         );
 
-
-
-
     return (
         <div className="container">
 
-            <h1 className="text-center mb-5">ADMIN</h1>
+            <h1 className="text-center mt-5 mb-5">ADMIN</h1>
 
             <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Overskrift</th>
-      <th scope="col">Joketekt</th>
-      <th scope="col">Ret</th>
-      <th scope="col">Slet</th>
-    </tr>
+                <thead>
+                    <tr>
+                        <th className="heading" scope="col">ID</th>
+                        <th className="heading" scope="col">Overskrift</th>
+                        <th className="heading" scope="col">Joketekt</th>
+                        <th className="heading" scope="col">Ret</th>
+                        <th className="heading" scope="col">Slet</th>
+                    </tr>
 
-    <tr>
-    <th scope="col"><i className="fas fa-plus-circle"></i>Opret Ny</th>
-    </tr>
-  </thead>
+                    <tr>
 
-  {/* <tbody> */}
-  {jokeList}
+                        <th className="heading" scope="col"> <Link to="/opret"><i className="fas fa-plus-circle"></i>   </Link>Opret Ny</th>
 
-  {/* </tbody> */}
-  
-</table>
+                    </tr>
+                </thead>
 
-            
+
+                {jokeList}
+
+            </table>
+
+
 
         </div>
     )

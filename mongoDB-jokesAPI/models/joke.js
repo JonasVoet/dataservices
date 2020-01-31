@@ -12,12 +12,16 @@ const jokesSchema = new mongoose.Schema({
         required: true
 
     },
+
     jokeDate: {
         type: Date,
         required: true,
         default: Date.now
 
-    }
+    },
+
+
+
 
 })
 
