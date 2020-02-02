@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
-// import { useEffect } from 'react';
-import { Redirect } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Opret = () => {
@@ -20,6 +19,8 @@ const Opret = () => {
 
         setRedirect(true);
 
+        alert('Du har nu oprettet en post');
+
       })
 
     console.log(title);
@@ -33,11 +34,24 @@ const Opret = () => {
 
   }
 
+  const handleButton = (e) => {
+
+    e.preventDefault();
+
+    setRedirect(true);
+
+    console.log(handleButton)
+  
+
+  }
+
+  
+
 
   return (
     <div className="container">
 
-      <h1 className="text-center mb-5">Opret en ny joke</h1>
+      <h1 className="text-center mb-5 mt-5">Opret en ny joke</h1>
 
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicEmail">
@@ -49,13 +63,13 @@ const Opret = () => {
           </Form.Text>
         </Form.Group>
 
-        <div class="form-group">
+        <div className="form-group">
 
           <textarea type="text" value={jokeText} required onChange={(e) => setjokeText(e.target.value)} className="form-control" id="exampleFormControlTextarea1" placeholder="Joke tekst her..." rows="3"></textarea>
         </div>
 
         <div className="col-lg-12 text-center p-3">
-          <Button variant="primary" type="button" className="m-2">
+          <Button onClick={handleButton} variant="primary" type="button" className="m-2">
             Fortryd
   </Button>
 

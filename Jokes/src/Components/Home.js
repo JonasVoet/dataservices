@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Toast } from 'react-bootstrap';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
+// import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -13,17 +14,13 @@ const Home = () => {
         axios.get('http://localhost:3000/jokes')
             .then(res => {
                 console.log(res);
-                setJokes(res.data.slice(0, 2));
+                setJokes(res.data.slice(-2));
 
             })
     }, [])
     const jokeList = jokes.length ? (
         jokes.map(joke => {
             return (
-
-
-
-
                 <Toast className="mb-4" key={joke.id}>
 
                     <Toast.Header>

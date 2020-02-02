@@ -17,7 +17,7 @@ const Ret = () => {
 
         axios.get('http://localhost:3000/jokes/' + joke_id)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setTitle(res.data.title);
                 setjokeText(res.data.jokeText);
 
@@ -40,9 +40,16 @@ const Ret = () => {
 
     }
 
+    const handleButton = (e) => {
+        e.preventDefault();
+
+        setRedirect(true);
+
+    }
+
     if (redirect) {
 
-        return <Redirect to='/' />
+        return <Redirect to='/jokeadmin' />
 
     }
 
@@ -63,13 +70,13 @@ const Ret = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <div class="form-group">
+                <div className="form-group">
 
                     <textarea type="text" value={jokeText} required onChange={(e) => setjokeText(e.target.value)} className="form-control" id="exampleFormControlTextarea1" placeholder="JokeTekst her..." rows="3"></textarea>
                 </div>
 
                 <div className="col-lg-12 text-center p-3">
-                    <Button variant="primary" type="button" className="m-2">
+                    <Button onClick={handleButton} variant="primary" type="button" className="m-2">
                         Fortryd
   </Button>
 

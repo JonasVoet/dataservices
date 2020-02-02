@@ -42,10 +42,7 @@ const JokeAdmin = () => {
         jokes.map(joke => {
             return (
 
-
                 <tbody key={joke.id}>
-
-
                     <tr>
                         <th scope="row">{joke._id}</th>
                         <td>{joke.title}</td>
@@ -54,6 +51,7 @@ const JokeAdmin = () => {
                         <td><i onClick={() => handleDelete(joke._id)} className="fas fa-minus-circle"></i></td>
 
                     </tr>
+
                 </tbody>
 
             )
@@ -67,7 +65,7 @@ const JokeAdmin = () => {
 
             <h1 className="text-center mt-5 mb-5">ADMIN</h1>
 
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th className="heading" scope="col">ID</th>
@@ -88,9 +86,6 @@ const JokeAdmin = () => {
                 {jokeList}
 
             </table>
-
-
-
         </div>
     )
 }

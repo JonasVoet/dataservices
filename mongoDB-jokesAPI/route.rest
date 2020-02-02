@@ -25,3 +25,6 @@ Content-Type: application/json
     "title": "Ny titel"
 }
 
+###
+GET http://localhost:3000/jokes/search/
+

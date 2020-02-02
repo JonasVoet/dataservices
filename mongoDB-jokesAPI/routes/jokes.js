@@ -57,6 +57,26 @@ router.delete('/:id', getJoke, async (req, res) => {
     }
 })
 
+// Search
+router.get('/search/:searchWord', async (req, res) => {
+    let searchWord = req.params.searchWord;
+
+    try {
+
+        
+        const jokes = await Joke.find({
+            $or: [
+                { "jokeText": {"$regex": searchWord, "$options": "i"} } ,
+                { "title": {"$regex": searchWord, "$options": "i"} }
+            ]
+        })
+        res.json(jokes);
+
+    } catch (err) {
+        res.status(500).json({ message: err.message }); 
+    }
+})
+
 async function getJoke(req, res, next) {
     let joke
     try {
@@ -71,5 +91,8 @@ async function getJoke(req, res, next) {
     res.joke = joke
     next()
 }
+
+
+
 
 module.exports = router
