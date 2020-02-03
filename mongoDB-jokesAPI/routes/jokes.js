@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Joke = require('../models/joke')
+const app = express()
 
 
 // Paginated
