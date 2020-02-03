@@ -4,15 +4,34 @@ import { Link } from 'react-router-dom';
 
 const AllJokes = () => {
     const [jokes, setJokes] = useState({});
+    const [page, setPage] = useState(1);
+    const [length, setLength] = useState();
+    const [limit, setLimit] = useState(4);
+
+    const nextButton = () => {
+        setPage(c => c + 1);
+    }
+
+    const previousButton = () => {
+        setPage(c => c + -1);
+    }
+
 
     useEffect(() => {
-        axios.get('http://localhost:3000/jokes')
+        axios.get('http://localhost:3000/jokes/limit', {
+            params: {
+                page,
+                limit,
+                setLimit
+            }
+        })
             .then(res => {
                 console.log(res);
-                setJokes(res.data)
+                setJokes(res.data.results);
+                setLength(res.data.length);
 
             })
-    }, [])
+    }, [page, limit])
 
 
     const jokeList = jokes.length ? (
@@ -47,14 +66,23 @@ const AllJokes = () => {
     return (
         <div>
             <div className="container">
+
+
                 <h1 className="text-center mt-5">Alle Jokes</h1>
+
+                <button className="button" disabled={page - 1 <= 0} onClick={previousButton}>Forrige</button>
+
+                <button className="button" disabled={limit * (page - 1) + limit >= length} onClick={nextButton}>Næste</button>
 
                 <div className="row">
 
+
                     {jokeList}
 
-                </div>
 
+
+                </div>
+                <p>{(page - 1) * limit + 1}-{limit + (page - 1) * limit} af {length}</p>
             </div>
         </div>
     )

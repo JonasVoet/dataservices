@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Toast } from 'react-bootstrap';
 
- const Page = () => {
+const Page = () => {
 
     const [jokes, setJokes] = useState({});
     const [page, setPage] = useState(1);
     const [length, setLength] = useState();
     const [limit, setLimit] = useState(3);
-    
+
 
 
 
@@ -19,12 +19,13 @@ import { Toast } from 'react-bootstrap';
     const previousButton = () => {
         setPage(c => c + -1);
     }
-    
+
     useEffect(() => {
         axios.get('http://localhost:3000/jokes/limit', {
             params: {
                 page,
-                limit
+                limit,
+                setLimit
             }
         })
             .then(res => {
@@ -34,6 +35,7 @@ import { Toast } from 'react-bootstrap';
 
             })
     }, [page, limit])
+
     const jokeList = jokes.length ? (
         jokes.map(joke => {
             return (
@@ -56,16 +58,19 @@ import { Toast } from 'react-bootstrap';
     return (
         <div>
 
-            <button disabled={page-1 <= 0} onClick={previousButton}>Forrige</button>
-            <button disabled={limit*(page-1)+limit >= length} onClick={nextButton}>Næste</button>
+            <button disabled={page - 1 <= 0} onClick={previousButton}>Forrige</button>
+
+            <button disabled={limit * (page - 1) + limit >= length} onClick={nextButton}>Næste</button>
+            
+            
             {jokeList}
 
-           
-           
 
-            <p>{(page-1)*limit+1}-{limit+(page-1)*limit} af {length}</p>
-           
-            
+
+
+            <p>{(page - 1) * limit + 1}-{limit + (page - 1) * limit} af {length}</p>
+
+
         </div>
     )
 }

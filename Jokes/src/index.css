@@ -48,3 +48,17 @@ i.fas.fa-minus-circle {
 i.fas.fa-plus-circle {
   color: green;
 }
+
+button.button {
+  border: none;
+  margin-right: 0.4rem;
+
+  padding: 0.3rem;
+  color: white;
+  background-color: #1F2024;
+
+}
+
+div.form-inline {
+  margin-top: 1.2rem !important;
+}

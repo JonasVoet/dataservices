@@ -32,7 +32,6 @@ const JokeAdmin = () => {
                     console.log(res);
 
                     fetchData();
-
                 });
         }
     }
@@ -42,17 +41,21 @@ const JokeAdmin = () => {
         jokes.map(joke => {
             return (
 
-                <tbody key={joke.id}>
-                    <tr>
-                        <th scope="row">{joke._id}</th>
-                        <td>{joke.title}</td>
-                        <td>{joke.jokeText}</td>
-                        <td><Link to={`/ret/${joke._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
-                        <td><i onClick={() => handleDelete(joke._id)} className="fas fa-minus-circle"></i></td>
 
-                    </tr>
 
-                </tbody>
+                <tr key={joke.id}>
+                    <th scope="row">{joke._id}</th>
+                    <td>{joke.title}</td>
+                    <td>{joke.jokeText}</td>
+                    <td><Link to={`/ret/${joke._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
+                    <td><i onClick={() => handleDelete(joke._id)} className="fas fa-minus-circle"></i></td>
+
+                </tr>
+
+
+
+
+
 
             )
         })
@@ -82,8 +85,11 @@ const JokeAdmin = () => {
                     </tr>
                 </thead>
 
+                <tbody>
 
-                {jokeList}
+
+                    {jokeList}
+                </tbody>
 
             </table>
         </div>
