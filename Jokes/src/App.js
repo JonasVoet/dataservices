@@ -9,6 +9,7 @@ import Ret from './Components/Ret';
 import AllJokes from './Components/AllJokes';
 import SearchResult from './Components/SearchResult';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import Page from './Components/Page';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/jokeadmin" component={JokeAdmin} />
           <Route path="/opret" component={Opret} />
           <Route path="/allejokes" component={AllJokes} />
+          <Route path="/page" component={Page} />
           <Route path="/jokes/search/:text" component={SearchResult} />
           <Route path="/ret/:joke_id" component={Ret} />
           <Route path="/:joke_id" component={Joke} />
