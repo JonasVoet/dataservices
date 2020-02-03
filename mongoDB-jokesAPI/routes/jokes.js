@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Joke = require('../models/joke')
+const app = express()
 
 // Getting all
 router.get('/', async (req, res) => {
@@ -63,17 +64,17 @@ router.get('/search/:searchWord', async (req, res) => {
 
     try {
 
-        
+
         const jokes = await Joke.find({
             $or: [
-                { "jokeText": {"$regex": searchWord, "$options": "i"} } ,
-                { "title": {"$regex": searchWord, "$options": "i"} }
+                { "jokeText": { "$regex": searchWord, "$options": "i" } },
+                { "title": { "$regex": searchWord, "$options": "i" } }
             ]
         })
         res.json(jokes);
 
     } catch (err) {
-        res.status(500).json({ message: err.message }); 
+        res.status(500).json({ message: err.message });
     }
 })
 
@@ -90,6 +91,45 @@ async function getJoke(req, res, next) {
 
     res.joke = joke
     next()
+}
+
+
+
+// Paginated
+app.get('/', paginatedResults(Joke), (req, res) => {
+    res.json(res.paginatedResults)
+})
+function paginatedResults(model) {
+    return async (req, res, next) => {
+        const page = parseInt(req.query.page)
+        const limit = parseInt(req.query.limit)
+
+        const startIndex = (page - 1) * limit
+        const endIndex = page * limit
+
+        const results = {}
+
+        if (endIndex < await model.countDocuments().exec()) {
+            results.next = {
+                page: page + 1,
+                limit: limit
+            }
+        }
+
+        if (startIndex > 0) {
+            results.previous = {
+                page: page - 1,
+                limit: limit
+            }
+        }
+        try {
+            results.results = await model.find().limit(limit).skip(startIndex).exec()
+            res.paginatedResults = results
+            next()
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    }
 }
 
 

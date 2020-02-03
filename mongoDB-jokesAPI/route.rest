@@ -28,3 +28,6 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/jokes/search/
 
+###
+GET http://localhost:3000/jokes?page=1&limit=2
+
