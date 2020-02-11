@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const Joke = require('../models/joke')
-const app = express()
+
 
 
 // Paginated
-router.get('/limit',paginatedResults(Joke), (req, res) => {
+router.get('/limit', paginatedResults(Joke), (req, res) => {
     console.log("aa")
     res.json(res.paginatedResults)
 })
@@ -130,7 +130,7 @@ function paginatedResults(model) {
             results = {
                 length,
                 results: await model.find().limit(limit).skip(startIndex).exec()
-            } 
+            }
             res.paginatedResults = results
             next()
         } catch (e) {
