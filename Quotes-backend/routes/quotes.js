@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Quote = require('../models/quote');
+const Categories = require('../models/category');
 
 // Getting all qoutes
 router.get('/', async (req, res) => {
@@ -22,7 +23,8 @@ router.post('/', async (req, res) => {
     const quote = new Quote({
         title: req.body.title,
         quoteText: req.body.quoteText,
-        author: req.body.author
+        author: req.body.author,
+        category: req.body.category
     })
     try {
         const newQuote = await quote.save();

@@ -1,4 +1,4 @@
-GET http://localhost:3000/categories
+GET http://localhost:3000/quotes
 
 ###
 GET http://localhost:3000/quotes/5e3d4d5cc0eb73284d5c73f5
@@ -11,7 +11,7 @@ Content-Type: application/json
     "title": "En mand bliver forvandlet til en måge.",
     "quoteText": "Mågen møder en blondine og siger jeg tror vi er tvillinger.",
     "author": "Jonas",
-    "category": "5e42ec714f2a7a47cc707c2d"
+    "category": "5e4301ea7496d841341d5082"
 }
 
 ###
@@ -35,13 +35,8 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-    "categoryName": "aa2"
+    "categoryName": "sjove"
 }
 
 ###
 GET http://localhost:3000/categories
-Content-Type: application/json
-
-{
-    "categoryName": "aa2"
-}

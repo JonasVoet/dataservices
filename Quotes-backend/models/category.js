@@ -8,7 +8,7 @@ const categorySchema = new mongoose.Schema({
     },
     quotes: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Quote"
+        ref: "Quotes"
     }]
 });
 
