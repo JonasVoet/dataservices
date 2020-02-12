@@ -5,7 +5,11 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DATABASE_URL, {
+const PORT = process.env.PORT || 3000;
+
+
+
+mongoose.connect("mongodb+srv://Jona7598:jomani123@cluster0-wjxqk.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -23,4 +27,4 @@ app.use('/quotes', quotesRouter);
 const categories = require('./routes/categories')
 app.use('/categories', categories);
 
-app.listen(3000, () => console.log('Server Started'));
+app.listen(PORT, () => console.log(`Server started on ${PORT}`));

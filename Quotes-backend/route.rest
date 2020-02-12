@@ -11,7 +11,7 @@ Content-Type: application/json
     "title": "En mand bliver forvandlet til en måge.",
     "quoteText": "Mågen møder en blondine og siger jeg tror vi er tvillinger.",
     "author": "Jonas",
-    "category": "5e4301ea7496d841341d5082"
+    "category": "5e4481bf0cad2f4b688ba5da"
 }
 
 ###
