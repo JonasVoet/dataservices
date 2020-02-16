@@ -31,9 +31,9 @@ router.get("/user/get/:id", function (req, res) {
 
 
 router.post("/user/login", function (req, res) {
-    User.findOne({ Email: req.body.email }, function (err, user) {
+    User.findOne({ Email: req.body.Email }, function (err, user) {
         if (user) {
-            if (user.password == req.body.password) {
+            if (user.Password == req.body.Password) {
                 res.send(user.id);
             } else {
                 res.status(400).send("Wrong email or password!");
