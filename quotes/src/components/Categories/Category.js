@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-const Categories = () => {
+const Category = () => {
 
     const [categories, setCategories] = useState({});
     const { category_id } = useParams();
@@ -52,4 +52,4 @@ const Categories = () => {
 }
 
 
-export default Categories;
+export default Category;

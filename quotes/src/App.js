@@ -6,7 +6,8 @@ import AllQuotes from './components/AllQuotes/AllQuotes';
 import Quote from './components/Quote/Quote';
 import QuoteAdmin from './components/CRUD/QuoteAdmin';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Categories from './components/Categories/Categories';
+import Category from './components/Categories/Category';
+
 
 const App = () => {
 
@@ -20,7 +21,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/allquotes" component={AllQuotes} />
           {/* <Route path="/categories" component={Categories} /> */}
-          <Route path="/:category_id" component={Categories} />
+          <Route path="/:category_id" component={Category} />
           <Route path="/:quote_id" component={Quote} />
           <Route path="/" component={QuoteAdmin} />
 
