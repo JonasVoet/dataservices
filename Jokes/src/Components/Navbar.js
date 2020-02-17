@@ -3,7 +3,7 @@ import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink, withRouter, useHistory } from 'react-router-dom';
 
 
-const Navigation = (props) => {
+const Navigation = () => {
 
     const valueRef = useRef(null);
     let history = useHistory();

@@ -26,7 +26,7 @@ const AllJokes = () => {
             }
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setJokes(res.data.results);
                 setLength(res.data.length);
 
@@ -38,9 +38,9 @@ const AllJokes = () => {
         jokes.map(joke => {
             return (
 
-                <div className="col-sm-6">
+                <div className="col-sm-6" key={joke._id}>
 
-                    <div className="card mt-5" key={joke.id}>
+                    <div className="card mt-5">
 
 
 
