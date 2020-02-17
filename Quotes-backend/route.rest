@@ -35,7 +35,7 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-    "categoryName": "sjove"
+    "categoryName": "Love Quotes"
 }
 
 ###
