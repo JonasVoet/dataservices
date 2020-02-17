@@ -28,7 +28,7 @@ const AllQuotes = () => {
             }
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setQuotes(res.data.results);
                 setLength(res.data.length);
             });
@@ -39,9 +39,9 @@ const AllQuotes = () => {
         quotes.map(quote => {
             return (
 
-                <div className="col-sm-6">
+                <div className="col-sm-6" key={quote._id}>
 
-                    <div className="card mt-5" key={quote.id}>
+                    <div className="card mt-5">
 
 
 
@@ -62,7 +62,7 @@ const AllQuotes = () => {
             )
         })
     ) : (
-            <div className="center">Ingen jokes at vise</div>
+            <div className="center">No quotes to show</div>
         );
 
 

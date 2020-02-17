@@ -1,8 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
+import axios from 'axios';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink, withRouter } from 'react-router-dom';
 
 const Navigation = () => {
+
+    const [categories, setCategories] = useState({});
+
+
+
+    // GET ALL CATEGORIES
+    useEffect(() => {
+        axios.get('http://localhost:3000/categories')
+            .then(res => {
+                // console.log(res);
+                setCategories(res.data);
+
+            });
+    }, []);
+
+
+
+    const categoryList = categories.length ? (
+        categories.map(category => {
+            return (
+
+
+                <Fragment key={category._id}>
+
+                    <NavDropdown.Item>  <NavLink className="nav-link" to={'/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
+
+
+                </Fragment>
+
+
+
+
+
+
+
+
+
+            )
+        })
+    ) : (
+            <div className="text-center">No categories to show</div>
+        );
+
+
+
+
+
+
     return (
 
 
@@ -17,10 +66,7 @@ const Navigation = () => {
 
                         <NavDropdown title="CATEGORIES" id="basic-nav-dropdown">
 
-                            <NavDropdown.Item>  <NavLink className="nav-link" to="/">Hej</NavLink></NavDropdown.Item>
-
-                            <NavDropdown.Item>  <NavLink className="nav-link" to="/">Hej2</NavLink></NavDropdown.Item>
-
+                            {categoryList}
 
 
                         </NavDropdown>
@@ -34,12 +80,6 @@ const Navigation = () => {
 
             </Navbar>
 
-
-            <div className="form-inline my-2 my-lg-0 justify-content-end">
-                <input className="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-sucess my-2 my-sm-0">Search</button>
-
-            </div>
 
 
         </div>

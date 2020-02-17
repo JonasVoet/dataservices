@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
 
 })
 
+
 // POST ONE
 router.post("/", async (req, res) => {
     const category = new Categories(req.body);
@@ -22,6 +23,29 @@ router.post("/", async (req, res) => {
         res.status(400).json({ message: error })
     }
 });
+
+
+
+// GET ONE Category
+router.get('/:id', getCategory, (req, res) => {
+    res.json(res.category)
+});
+
+async function getCategory(req, res, next) {
+    let category
+    try {
+        category = await Categories.findById(req.params.id)
+        if (category == null) {
+            return res.status(404).json({ message: 'Cannot find category by ID' })
+        }
+    } catch (err) {
+        return res.status(500).json({ message: err.message })
+    }
+
+    res.category = category
+    next()
+
+}
 
 
 
