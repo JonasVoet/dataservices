@@ -1,0 +1,42 @@
+GET http://localhost:3000/quotes
+
+###
+GET http://localhost:3000/quotes/5e3d4d5cc0eb73284d5c73f5
+
+###
+POST http://localhost:3000/quotes
+Content-Type: application/json
+
+{
+    "title": "En mand bliver forvandlet til en måge.",
+    "quoteText": "Mågen møder en blondine og siger jeg tror vi er tvillinger.",
+    "author": "Jonas",
+    "category": "5e4481bf0cad2f4b688ba5da"
+}
+
+###
+DELETE http://localhost:3000/quotes/5e3d4d5cc0eb73284d5c73f5
+
+###
+PATCH http://localhost:3000/quotes/
+Content-Type: application/json
+
+{
+    "title": "New title"
+}
+
+###
+GET http://localhost:3000/quotes/search/
+
+// Categories
+
+###
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "categoryName": "sjove"
+}
+
+###
+GET http://localhost:3000/categories
