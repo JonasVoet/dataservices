@@ -29,7 +29,7 @@ const Page = () => {
             }
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setJokes(res.data.results);
                 setLength(res.data.length);
 

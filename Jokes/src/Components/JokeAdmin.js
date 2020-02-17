@@ -43,7 +43,7 @@ const JokeAdmin = () => {
 
 
 
-                <tr key={joke.id}>
+                <tr key={joke._id}>
                     <th scope="row">{joke._id}</th>
                     <td>{joke.title}</td>
                     <td>{joke.jokeText}</td>

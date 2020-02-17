@@ -19,7 +19,7 @@ const Home = () => {
     const jokeList = jokes.length ? (
         jokes.map(joke => {
             return (
-                <Toast className="mb-4" key={joke.id}>
+                <Toast className="mb-4" key={joke._id}>
 
                     <Toast.Header>
                         <strong className="mr-auto mt-4">{joke.title}</strong>
