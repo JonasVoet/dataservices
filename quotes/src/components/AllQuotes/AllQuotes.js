@@ -50,7 +50,8 @@ const AllQuotes = () => {
                                 <h5 className="card-title">{quote.title}</h5>
                             </Link>
                             <p className="card-text">{quote.quoteText}</p>
-                            <p>Dato: {new Date(quote.quoteDate).toLocaleString()}</p>
+                            <p className="card-text"><i>- {quote.author}</i></p>
+                            <p>Date: {new Date(quote.quoteData).toLocaleString()}</p>
 
                         </div>
 

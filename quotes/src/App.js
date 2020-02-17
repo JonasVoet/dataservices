@@ -18,6 +18,7 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/allquotes" component={AllQuotes} />
           <Route path="/" component={QuoteAdmin} />
+          {/* <Route path="/:quote_id" component={} /> */}
         </Switch>
 
       </div>
