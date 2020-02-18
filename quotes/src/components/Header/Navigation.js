@@ -25,8 +25,8 @@ const Navigation = () => {
         categories.map(category => {
             return (
 
-                
-                    <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
+
+                <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
             )
         })
     ) : (
@@ -34,7 +34,6 @@ const Navigation = () => {
         );
 
     return (
-
 
         <div className="container">
 
@@ -54,7 +53,7 @@ const Navigation = () => {
 
                         <NavLink className="nav-link" to="/allquotes">ALL QUOTES</NavLink>
 
-                        <NavLink className="nav-link" to="/quoteadmin">ADMIN</NavLink>
+                        <NavLink className="nav-link" to="/admin">ADMIN</NavLink>
 
                     </Nav>
                 </Navbar.Collapse>

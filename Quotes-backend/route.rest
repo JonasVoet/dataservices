@@ -15,6 +15,15 @@ Content-Type: application/json
 }
 
 ###
+PATCH  http://localhost:3000/quotes/5e4a5ed651e87e8ba8033c4e
+Content-Type: application/json
+
+{
+    "title": "slepppp"
+}
+
+
+###
 DELETE http://localhost:3000/quotes/5e3d4d5cc0eb73284d5c73f5
 
 ###
