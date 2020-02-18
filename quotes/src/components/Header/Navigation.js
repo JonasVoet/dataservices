@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -25,32 +25,13 @@ const Navigation = () => {
         categories.map(category => {
             return (
 
-
-                <Fragment key={category._id}>
-
-                    <NavDropdown.Item>  <NavLink className="nav-link" to={'/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
-
-
-                </Fragment>
-
-
-
-
-
-
-
-
-
+                
+                    <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
             )
         })
     ) : (
             <div className="text-center">No categories to show</div>
         );
-
-
-
-
-
 
     return (
 

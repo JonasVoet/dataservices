@@ -46,7 +46,7 @@ const AllQuotes = () => {
 
 
                         <div className="card-body text-center">
-                            <Link to={'/' + quote._id}>
+                            <Link to={'/quotes/' + quote._id}>
                                 <h5 className="card-title">{quote.title}</h5>
                             </Link>
                             <p className="card-text">{quote.quoteText}</p>

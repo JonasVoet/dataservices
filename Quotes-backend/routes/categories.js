@@ -34,7 +34,7 @@ router.get('/:id', getCategory, (req, res) => {
 async function getCategory(req, res, next) {
     let category
     try {
-        category = await Categories.findById(req.params.id)
+        category = await Categories.findById(req.params.id).populate("quotes")
         if (category == null) {
             return res.status(404).json({ message: 'Cannot find category by ID' })
         }

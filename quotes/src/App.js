@@ -20,11 +20,10 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/allquotes" component={AllQuotes} />
-
-          <Route path="/:category_id" component={Category} />
-          <Route path="/:quote_id" component={Quote} />
+          
+          <Route path="/quotes/:quote_id" component={Quote} />
+          <Route path="/category/:category_id" component={Category} />
           <Route path="/" component={QuoteAdmin} />
-
         </Switch>
 
       </div>
