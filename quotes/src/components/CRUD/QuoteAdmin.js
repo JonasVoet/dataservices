@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-
 const QuoteAdmin = () => {
 
     const [quotes, setQuotes] = useState({});
@@ -52,8 +51,6 @@ const QuoteAdmin = () => {
             <div className="text-center">No quotes to show</div>
         );
 
-
-
     return (
         <div className="container">
 
@@ -73,9 +70,6 @@ const QuoteAdmin = () => {
                     <tr>
 
                         <th className="heading" scope="col"> <Link to="/add"><i className="fas fa-plus-circle"></i>   </Link>Add new quote</th>
-
-
-
                     </tr>
 
                     <th className="heading" scope="col"> <Link to="/addcategory"><i className="fas fa-plus-circle"></i>   </Link>Add new category</th>
