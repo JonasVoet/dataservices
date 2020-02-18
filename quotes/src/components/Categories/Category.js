@@ -16,6 +16,16 @@ const Category = () => {
             });
     }, [category_id]);
 
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/quotes')
+    //         .then(res => {
+    //             console.log(res);
+    //             setCategories(res.data);
+    //         });
+    // }, []);
+
+
+
     const categoryList = categories.length ? (
         categories.map(category => {
             return (
