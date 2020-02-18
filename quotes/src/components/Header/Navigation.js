@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink, withRouter, useHistory } from 'react-router-dom';
 
 const Navigation = () => {
 
+    const valueRef = useRef(null);
+    let history = useHistory();
     const [categories, setCategories] = useState({});
 
+    const handleClick = () => {
+        history.push("/quotes/search/" + valueRef.current.value)
 
+        valueRef.current.value = "";
+    }
+
+    const handleEnter = (event) => {
+
+        if (event.keyCode === 13) {
+            history.push("/quotes/search/" + valueRef.current.value)
+
+            valueRef.current.value = "";
+        }
+    }
 
     // GET ALL CATEGORIES
     useEffect(() => {
         axios.get('http://localhost:3000/categories')
             .then(res => {
-                // console.log(res);
                 setCategories(res.data);
 
             });
@@ -59,6 +73,12 @@ const Navigation = () => {
                 </Navbar.Collapse>
 
             </Navbar>
+
+            <div className="form-inline my-2 my-lg-0 justify-content-end">
+                <input ref={valueRef} onKeyDown={handleEnter} className="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" />
+                <button onClick={handleClick} className="btn btn-outline-sucess my-2 my-sm-0">Search</button>
+
+            </div>
 
 
 

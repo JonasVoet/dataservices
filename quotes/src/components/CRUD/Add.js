@@ -45,7 +45,7 @@ const Add = () => {
             <h1 className="text-center mb-5 mt-5">Add a new Quote</h1>
 
             <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicEmail1">
 
                     <Form.Control type="text" value={title} required placeholder="Quote Title" onChange={(e) => setTitle(e.target.value)} />
 
@@ -68,7 +68,7 @@ const Add = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail">
+                <Form.Group controlId="formBasicEmail3">
 
                     <Form.Control type="text" value={category} required placeholder="Category ID" onChange={(e) => setCategory(e.target.value)} />
 

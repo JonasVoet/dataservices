@@ -54,13 +54,13 @@ router.post('/', async (req, res) => {
 // Updating One
 router.patch('/:id', getQuote, async (req, res) => {
     if (req.body.title != null) {
-        res.joke.title = req.body.title
+        res.quote.title = req.body.title
     }
     if (req.body.quoteText != null) {
-        res.joke.quoteText = req.body.quoteText
+        res.quote.quoteText = req.body.quoteText
     }
     if (req.body.author != null) {
-        res.joke.author = req.body.author
+        res.quote.author = req.body.author
     }
     try {
         const updatedQuote = await res.quote.save()
