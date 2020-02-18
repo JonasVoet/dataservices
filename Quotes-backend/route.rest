@@ -1,7 +1,7 @@
 GET http://localhost:3000/quotes
 
 ###
-GET http://localhost:3000/quotes/5e3d4d5cc0eb73284d5c73f5
+GET http://localhost:3000/quotes/5e4a5ed651e87e8ba8033c4e
 
 ###
 POST http://localhost:3000/quotes
@@ -35,7 +35,7 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-    "categoryName": "sjove"
+    "categoryName": "Love Quotes"
 }
 
 ###
