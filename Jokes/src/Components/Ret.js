@@ -17,7 +17,6 @@ const Ret = () => {
 
         axios.get('http://localhost:3000/jokes/' + joke_id)
             .then(res => {
-                // console.log(res);
                 setTitle(res.data.title);
                 setjokeText(res.data.jokeText);
 
@@ -29,11 +28,6 @@ const Ret = () => {
 
         axios.patch('http://localhost:3000/jokes/' + joke_id, { title, jokeText })
             .then(() => setRedirect(true));
-
-
-
-
-
 
         console.log(title);
         console.log(jokeText);

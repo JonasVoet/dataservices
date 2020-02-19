@@ -16,15 +16,6 @@ const Category = () => {
             });
     }, [category_id]);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost:3000/quotes')
-    //         .then(res => {
-    //             console.log(res);
-    //             setCategories(res.data);
-    //         });
-    // }, []);
-
-
 
     const categoryList = categories.length ? (
         categories.map(category => {
@@ -34,6 +25,7 @@ const Category = () => {
                     <div className="card-body text-center">
                         <h4 className="card-title">{category.title}</h4>
                         <p className="card-text">{category.quoteText}</p>
+                        <p className="card-text">- <i>{category.author}</i></p>
 
                         <p>Date: {new Date(category.quoteData).toLocaleString()}</p>
 
@@ -46,20 +38,12 @@ const Category = () => {
         );
 
 
-
-
-
-
-
-
-
     return (
-        <div>
+        <div className="container">
             {categoryList}
 
         </div>
     )
 }
-
 
 export default Category;

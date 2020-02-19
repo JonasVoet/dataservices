@@ -41,8 +41,6 @@ const JokeAdmin = () => {
         jokes.map(joke => {
             return (
 
-
-
                 <tr key={joke._id}>
                     <th scope="row">{joke._id}</th>
                     <td>{joke.title}</td>
