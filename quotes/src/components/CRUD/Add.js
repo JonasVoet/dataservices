@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
@@ -8,23 +8,47 @@ const Add = () => {
     const [title, setTitle] = useState('');
     const [quoteText, setQuoteText] = useState('');
     const [author, setAuthor] = useState('');
-    const [category, setCategory] = useState('');
+    const [categories, setCategories] = useState({});
     const [redirect, setRedirect] = useState(false);
+
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/categories')
+            .then(res => {
+
+                setCategories(res.data);
+                console.log(res);
+
+            })
+    }, [])
+
+    const categoryList = categories.length ? (
+        categories.map(category => {
+            return (
+
+                <option value={category._id}>{category.categoryName}</option>
+
+
+            )
+        })
+    ) : (
+            <Fragment></Fragment>
+        );
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3000/quotes', { title, quoteText, author, category })
+        axios.post('http://localhost:3000/quotes', { title, quoteText, author, categories })
             .then(res => {
                 setRedirect(true);
 
                 alert('You have added a quote');
             })
 
-        console.log(title);
-        console.log(quoteText);
-        console.log(author);
+        // console.log(title);
+        // console.log(quoteText);
+        // console.log(author);
 
     }
 
@@ -33,10 +57,15 @@ const Add = () => {
     }
 
     const handleButton = (e) => {
+
         e.preventDefault();
+
         setRedirect(true);
+
         console.log(handleButton);
     }
+
+
 
 
     return (
@@ -68,14 +97,22 @@ const Add = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail3">
+                <Form.Group controlId="formBasicEmail4">
+                    <select as="select">
+
+
+                        {categoryList}
+                    </select>
+                </Form.Group>
+
+                {/* <Form.Group controlId="formBasicEmail3">
 
                     <Form.Control type="text" value={category} required placeholder="Category ID" onChange={(e) => setCategory(e.target.value)} />
 
                     <Form.Text className="text-muted">
 
                     </Form.Text>
-                </Form.Group>
+                </Form.Group> */}
 
                 <div className="col-lg-12 text-center p-3">
                     <Button onClick={handleButton} variant="primary" type="button" className="m-2">

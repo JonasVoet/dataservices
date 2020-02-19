@@ -16,7 +16,7 @@ const QuoteAdmin = () => {
     const fetchData = () => {
         axios.get('http://localhost:3000/quotes')
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setQuotes(res.data)
             });
     }
@@ -25,7 +25,7 @@ const QuoteAdmin = () => {
         if (window.confirm('Sure you wanna delete this quote?')) {
             axios.delete('http://localhost:3000/quotes/' + id)
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
 
                     fetchData();
                 });
