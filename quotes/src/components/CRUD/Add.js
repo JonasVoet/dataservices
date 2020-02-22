@@ -9,11 +9,12 @@ const Add = () => {
     const [quoteText, setQuoteText] = useState('');
     const [author, setAuthor] = useState('');
     const [categories, setCategories] = useState({});
+    const [category, setCategory] = useState('');
     const [redirect, setRedirect] = useState(false);
 
 
     useEffect(() => {
-        axios.get('http://localhost:3000/categories')
+        axios.get('https://jonasv2711quotes.azurewebsites.net/categories')
             .then(res => {
 
                 setCategories(res.data);
@@ -26,7 +27,12 @@ const Add = () => {
         categories.map(category => {
             return (
 
-                <option value={category._id}>{category.categoryName}</option>
+
+                <Fragment>
+                    <option value="" disabled hidden>Pick a category</option>
+                    <option value={category._id}>{category.categoryName}</option>
+                </Fragment>
+
 
 
             )
@@ -39,7 +45,7 @@ const Add = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3000/quotes', { title, quoteText, author, categories })
+        axios.post('https://jonasv2711quotes.azurewebsites.net/quotes', { title, quoteText, author, category })
             .then(res => {
                 setRedirect(true);
 
@@ -49,6 +55,7 @@ const Add = () => {
         // console.log(title);
         // console.log(quoteText);
         // console.log(author);
+        console.log(category);
 
     }
 
@@ -64,9 +71,6 @@ const Add = () => {
 
         console.log(handleButton);
     }
-
-
-
 
     return (
         <div className="container">
@@ -98,21 +102,14 @@ const Add = () => {
                 </Form.Group>
 
                 <Form.Group controlId="formBasicEmail4">
-                    <select as="select">
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} as="select">
 
 
                         {categoryList}
                     </select>
                 </Form.Group>
 
-                {/* <Form.Group controlId="formBasicEmail3">
 
-                    <Form.Control type="text" value={category} required placeholder="Category ID" onChange={(e) => setCategory(e.target.value)} />
-
-                    <Form.Text className="text-muted">
-
-                    </Form.Text>
-                </Form.Group> */}
 
                 <div className="col-lg-12 text-center p-3">
                     <Button onClick={handleButton} variant="primary" type="button" className="m-2">

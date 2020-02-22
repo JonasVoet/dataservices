@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('../node_modules/express');
 const router = express.Router();
 const Quote = require('../models/quote');
 const Categories = require('../models/category');
@@ -6,7 +6,7 @@ const Categories = require('../models/category');
 
 
 // Paginated
-router.get('/limit', paginatedResults(Quote), (req, res) => {
+router.get('/limit', paginatedResults(Quote), (_req, res) => {
     console.log("aa")
     res.json(res.paginatedResults)
 })

@@ -14,7 +14,7 @@ const Edit = () => {
     const { quote_id } = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/quotes/' + quote_id)
+        axios.get('https://jonasv2711quotes.azurewebsites.net/quotes' + quote_id)
             .then(res => {
                 setTitle(res.data.title);
                 setQuoteText(res.data.quoteText);
@@ -27,7 +27,7 @@ const Edit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.patch('http://localhost:3000/quotes/' + quote_id, { title, quoteText, author })
+        axios.patch('https://jonasv2711quotes.azurewebsites.net/quotes' + quote_id, { title, quoteText, author })
             .then(() => setRedirect(true));
 
         console.log(title);

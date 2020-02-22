@@ -14,18 +14,18 @@ const QuoteAdmin = () => {
     }, []);
 
     const fetchData = () => {
-        axios.get('http://localhost:3000/quotes')
+        axios.get('https://jonasv2711quotes.azurewebsites.net/quotes')
             .then(res => {
-                // console.log(res);
+                console.log(res);
                 setQuotes(res.data)
             });
     }
 
     const handleDelete = (id) => {
         if (window.confirm('Sure you wanna delete this quote?')) {
-            axios.delete('http://localhost:3000/quotes/' + id)
+            axios.delete('https://jonasv2711quotes.azurewebsites.net/quotes/' + id)
                 .then(res => {
-                    // console.log(res);
+                    console.log(res);
 
                     fetchData();
                 });
@@ -39,6 +39,7 @@ const QuoteAdmin = () => {
                 <tr key={quote._id}>
                     <th scope="row">{quote._id}</th>
                     <td>{quote.title}</td>
+                    <td>{quote.category.categoryName}</td>
                     <td>{quote.quotes}</td>
                     <td>{quote.quoteText}</td>
                     <td><Link to={`/edit/${quote._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
@@ -52,7 +53,7 @@ const QuoteAdmin = () => {
         );
 
     return (
-        <div className="container">
+        <div id="admin" className="container">
 
             <h1 className="text-center mt-5 mb-5">ADMIN</h1>
 
@@ -72,7 +73,9 @@ const QuoteAdmin = () => {
                         <th className="heading" scope="col"> <Link to="/add"><i className="fas fa-plus-circle"></i>   </Link>Add new quote</th>
                     </tr>
 
-                    <th className="heading" scope="col"> <Link to="/addcategory"><i className="fas fa-plus-circle"></i>   </Link>Add new category</th>
+                    <tr>
+                        <th className="heading" scope="col"> <Link to="/addcategory"><i className="fas fa-plus-circle"></i>   </Link>Add new category</th>
+                    </tr>
 
 
                 </thead>

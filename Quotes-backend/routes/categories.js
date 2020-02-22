@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require('../node_modules/express');
 const router = express.Router();
 const Categories = require('../models/category');
 
 
-// Getting all
+// Getting alleeaeea IW2caaWRAAW
 router.get('/', async (req, res) => {
 
     const categories = await Categories.find().populate("quotes");

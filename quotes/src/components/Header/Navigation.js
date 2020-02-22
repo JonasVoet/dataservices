@@ -1,32 +1,18 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { NavLink, withRouter, useHistory } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 const Navigation = () => {
 
-    const valueRef = useRef(null);
-    let history = useHistory();
+
     const [categories, setCategories] = useState({});
 
-    const handleClick = () => {
-        history.push("/quotes/search/" + valueRef.current.value)
 
-        valueRef.current.value = "";
-    }
-
-    const handleEnter = (event) => {
-
-        if (event.keyCode === 13) {
-            history.push("/quotes/search/" + valueRef.current.value)
-
-            valueRef.current.value = "";
-        }
-    }
 
     // GET ALL CATEGORIES
     useEffect(() => {
-        axios.get('http://localhost:3000/categories')
+        axios.get('https://jonasv2711quotes.azurewebsites.net/categories')
             .then(res => {
                 setCategories(res.data);
 
@@ -40,7 +26,9 @@ const Navigation = () => {
             return (
 
 
-                <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
+                <Fragment>
+                    <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
+                </Fragment>
             )
         })
     ) : (
@@ -49,14 +37,15 @@ const Navigation = () => {
 
     return (
 
-        <div className="container">
+        <div className="navbar">
 
             <Navbar id="nav" className="justify-content-end" variant="light" expand={"xl"}>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto pr-2">
+                    <Nav className="ml-auto pr-2">
 
-                        <NavLink className="nav-link" exact to="/">HOME</NavLink>
+                        <NavLink className="nav-link" to="/">HOME</NavLink>
+                        {/* <NavLink className="nav-link" exact to="/">HOME</NavLink> */}
 
                         <NavDropdown title="CATEGORIES" id="basic-nav-dropdown">
 
@@ -65,17 +54,14 @@ const Navigation = () => {
 
                         </NavDropdown>
 
-                        <NavLink className="nav-link" to="/allquotes">ALL QUOTES</NavLink>
 
+                        <NavLink className="nav-link" to="/about">ABOUT</NavLink>
                         <NavLink className="nav-link" to="/admin">ADMIN</NavLink>
 
                     </Nav>
                 </Navbar.Collapse>
-                <div className="form-inline my-2 my-lg-0 justify-content-end">
-                    <input ref={valueRef} onKeyDown={handleEnter} className="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" />
-                    <button onClick={handleClick} className="btn btn-outline-sucess my-2 my-sm-0">Search</button>
 
-                </div>
+
 
 
             </Navbar>
@@ -83,7 +69,7 @@ const Navigation = () => {
 
 
 
-        </div>
+        </div >
     )
 }
 

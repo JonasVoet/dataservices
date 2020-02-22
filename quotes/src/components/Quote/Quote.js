@@ -7,7 +7,7 @@ const Quote = () => {
     const { quote_id } = useParams();
 
     useEffect(() => {
-        axios.get('http://localhost:3000/quotes/' + quote_id)
+        axios.get('https://jonasv2711quotes.azurewebsites.net/quotes/' + quote_id)
             .then(res => {
                 console.log(res);
                 setQuotes(res.data);
@@ -18,7 +18,7 @@ const Quote = () => {
         <div className="card mt-5">
             <div className="card-body text-center">
                 <h4 className="card-title">{quote.title}</h4>
-                <p className="card-text">{quote.quoteText}</p>
+                <p className="card-text"><span>“</span>{quote.quoteText}<span>”</span></p>
 
                 <p>Date: {new Date(quote.quoteData).toLocaleString()}</p>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import Home from './components/Home/Home';
-import Navigation from './components/Header/Navigation';
+// import Home from './components/Home/Home';
+
 import AllQuotes from './components/AllQuotes/AllQuotes';
 import Quote from './components/Quote/Quote';
 import QuoteAdmin from './components/CRUD/QuoteAdmin';
@@ -12,6 +12,10 @@ import AddCategory from './components/CRUD/AddCategory';
 import Edit from './components/CRUD/Edit';
 import SearchResult from './components/SearchResult/SearchResult';
 
+import './App.css'
+// import Search from './components/Search/Search';
+import Header from './components/Header/Header';
+
 
 const App = () => {
 
@@ -19,13 +23,12 @@ const App = () => {
     <BrowserRouter>
 
       <div className="App">
-        <Navigation />
+        <Header />
 
         <Switch>
 
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={AllQuotes} />
           <Route path="/quotes/search/:text" component={SearchResult} />
-          <Route path="/allquotes" component={AllQuotes} />
           <Route path="/quotes/:quote_id" component={Quote} />
           <Route path="/addcategory" component={AddCategory} />
           <Route path="/add" component={Add} />
