@@ -43,6 +43,8 @@ const Navigation = () => {
                 <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
             )
         })
+
+    
     ) : (
             <div className="text-center">No categories to show</div>
         );
@@ -72,13 +74,15 @@ const Navigation = () => {
                     </Nav>
                 </Navbar.Collapse>
 
-            </Navbar>
-
-            <div className="form-inline my-2 my-lg-0 justify-content-end">
+                <div className="form-inline my-2 my-lg-0 justify-content-end">
                 <input ref={valueRef} onKeyDown={handleEnter} className="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" />
                 <button onClick={handleClick} className="btn btn-outline-sucess my-2 my-sm-0">Search</button>
 
             </div>
+
+            </Navbar>
+
+           
 
 
 
