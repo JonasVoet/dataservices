@@ -7,11 +7,10 @@ const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
 
-
-
-mongoose.connect("mongodb+srv://Jona7598:jomani123@cluster0-wjxqk.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://jonas7598:jomani123@cluster0-karfb.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true
+
 });
 
 const db = mongoose.connection
@@ -22,10 +21,11 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
-const quotesRouter = require('./routes/quotes')
-app.use('/quotes', quotesRouter);
+const productsRouter = require('./routes/products')
+app.use('/products', productsRouter);
 
 const categories = require('./routes/categories')
 app.use('/categories', categories);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+

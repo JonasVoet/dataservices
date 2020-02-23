@@ -5,36 +5,35 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 const Navigation = () => {
 
-
     const [categories, setCategories] = useState({});
-
 
 
     // GET ALL CATEGORIES
     useEffect(() => {
-        axios.get('https://jonasv2711quotes.azurewebsites.net/categories')
+        axios.get('https://jonasv2711products.azurewebsites.net/categories')
             .then(res => {
                 setCategories(res.data);
-
             });
     }, []);
-
-
 
     const categoryList = categories.length ? (
         categories.map(category => {
             return (
+
                 <Fragment>
                     <NavDropdown.Item>  <NavLink className="nav-link" to={'/category/' + category._id}>{category.categoryName}</NavLink></NavDropdown.Item>
                 </Fragment>
+
             )
         })
     ) : (
             <div className="text-center">No categories to show</div>
         );
 
-    return (
 
+
+
+    return (
         <div className="navbar">
 
             <Navbar id="nav" className="justify-content-end" variant="light" expand={"xl"}>
@@ -43,7 +42,9 @@ const Navigation = () => {
                     <Nav className="ml-auto pr-2">
 
                         <NavLink className="nav-link" to="/">HOME</NavLink>
-                        {/* <NavLink className="nav-link" exact to="/">HOME</NavLink> */}
+
+                        <NavLink className="nav-link" to="/allproducts">ALL PRODUCTS</NavLink>
+
 
                         <NavDropdown title="CATEGORIES" id="basic-nav-dropdown">
 
@@ -52,18 +53,11 @@ const Navigation = () => {
 
                         </NavDropdown>
 
-
-                        <NavLink className="nav-link" to="/about">ABOUT</NavLink>
                         <NavLink className="nav-link" to="/admin">ADMIN</NavLink>
 
                     </Nav>
                 </Navbar.Collapse>
-
-
-
-
             </Navbar>
-
         </div >
     )
 }

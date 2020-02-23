@@ -4,25 +4,21 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 const Add = () => {
-
     const [title, setTitle] = useState('');
-    const [quoteText, setQuoteText] = useState('');
-    const [author, setAuthor] = useState('');
+    const [productText, setProductText] = useState('');
+    const [price, setPrice] = useState('');
     const [categories, setCategories] = useState({});
     const [category, setCategory] = useState('');
-    const [quoteImage, setQuoteImage] = useState('');
+    const [productImage, setProductImage] = useState('');
     const [redirect, setRedirect] = useState(false);
 
-
     useEffect(() => {
-        axios.get('https://jonasv2711quotes.azurewebsites.net/categories')
+        axios.get('https://jonasv2711products.azurewebsites.net/categories')
             .then(res => {
-
                 setCategories(res.data);
-                console.log(res);
-
+                // console.log(res);
             })
-    }, [])
+    }, []);
 
     const categoryList = categories.length ? (
         categories.map(category => {
@@ -38,34 +34,27 @@ const Add = () => {
 
             )
         })
+
     ) : (
             <Fragment></Fragment>
         );
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const formData = new FormData();
         formData.append('title', title);
-        formData.append('quoteText', quoteText);
-        formData.append('author', author);
+        formData.append('productText', productText);
+        formData.append('price', price);
         formData.append('category', category);
-        formData.append('quoteImage', quoteImage);
+        formData.append('productImage', productImage);
 
-        axios.post('http://localhost:3000/quotes', formData)
+        axios.post('https://jonasv2711products.azurewebsites.net/products', formData)
             .then(res => {
                 setRedirect(true);
 
-                alert('You have added a quote');
+                alert('You have added a new product');
             })
-
-        // console.log(title);
-        // console.log(quoteText);
-        // console.log(author);
-        console.log(category);
-        console.log(quoteImage);
-
     }
 
     if (redirect) {
@@ -73,23 +62,23 @@ const Add = () => {
     }
 
     const handleButton = (e) => {
-
         e.preventDefault();
-
         setRedirect(true);
-
-        console.log(handleButton);
+        // console.log(handleButton);
     }
+
+
+
 
     return (
         <div className="container">
 
-            <h1 className="text-center mb-5 mt-5">Add a new Quote</h1>
+            <h1 className="text-center mb-5 mt-5">Add a new Product</h1>
 
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="formBasicEmail1">
 
-                    <Form.Control type="text" value={title} required placeholder="Quote Title" onChange={(e) => setTitle(e.target.value)} />
+                    <Form.Control type="text" value={title} required placeholder="Product Title" onChange={(e) => setTitle(e.target.value)} />
 
                     <Form.Text className="text-muted">
 
@@ -98,12 +87,12 @@ const Add = () => {
 
                 <div className="form-group">
 
-                    <textarea type="text" value={quoteText} required onChange={(e) => setQuoteText(e.target.value)} className="form-control" id="exampleFormControlTextarea1" placeholder="Quote text..." rows="3"></textarea>
+                    <textarea type="text" value={productText} required onChange={(e) => setProductText(e.target.value)} className="form-control" id="exampleFormControlTextarea1" placeholder="Product text..." rows="3"></textarea>
                 </div>
 
                 <Form.Group controlId="formBasicEmail">
 
-                    <Form.Control type="text" value={author} required placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
+                    <Form.Control type="text" value={price} required placeholder="Price" onChange={(e) => setPrice(e.target.value)} />
 
                     <Form.Text className="text-muted">
 
@@ -126,13 +115,13 @@ const Add = () => {
   </Button>
 
                     <Button variant="primary" type="submit">
-                        Save Quote
+                        Save Product
                                 </Button>
 
                 </div>
 
 
-                <input onChange={(e) => setQuoteImage(e.target.files[0])} type="file" name="quoteImage" />
+                <input onChange={(e) => setProductImage(e.target.files[0])} type="file" name="productImage" />
 
             </Form>
 

@@ -2,55 +2,55 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+const ProductAdmin = () => {
 
-const QuoteAdmin = () => {
-
-    const [quotes, setQuotes] = useState({});
+    const [products, setProducts] = useState({});
 
     useEffect(() => {
-
         fetchData();
-
     }, []);
 
     const fetchData = () => {
-        axios.get('https://jonasv2711quotes.azurewebsites.net/quotes')
+        axios.get('https://jonasv2711products.azurewebsites.net/products')
             .then(res => {
-                console.log(res);
-                setQuotes(res.data)
+                // console.log(res);
+                setProducts(res.data)
             });
     }
 
     const handleDelete = (id) => {
-        if (window.confirm('Sure you wanna delete this quote?')) {
-            axios.delete('https://jonasv2711quotes.azurewebsites.net/quotes/' + id)
+        if (window.confirm('Sure you wanna delete this producy?')) {
+            axios.delete('https://jonasv2711products.azurewebsites.net/products/' + id)
                 .then(res => {
                     console.log(res);
-
                     fetchData();
                 });
         }
     }
 
-    const quoteList = quotes.length ? (
-        quotes.map(quote => {
+    const productList = products.length ? (
+        products.map(products => {
             return (
 
-                <tr key={quote._id}>
-                    <th scope="row">{quote._id}</th>
-                    <td>{quote.title}</td>
-                    {/* <td>{quote.category.categoryName}</td> */}
-                    <td>{quote.quotes}</td>
-                    <td>{quote.quoteText}</td>
-                    <td><Link to={`/edit/${quote._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
-                    <td><i onClick={() => handleDelete(quote._id)} className="fas fa-minus-circle"></i></td>
+                <tr key={products._id}>
+                    <th scope="row">{products._id}</th>
+                    <td>{products.title}</td>
+                    <td>{products.category.categoryName}</td>
+                    <td>{products.productText}</td>
+                    <td>{`€ ${products.price}`}</td>
+                    <td>{products.products}</td>
+                    <td><Link to={`/edit/${products._id}`}><i className="fas fa-pencil-alt"></i></Link></td>
+                    <td><i onClick={() => handleDelete(products._id)} className="fas fa-minus-circle"></i></td>
 
                 </tr>
+
             )
         })
     ) : (
-            <div className="text-center">No quotes to show</div>
+            <div className="text-center">No Products to show, must be a error</div>
         );
+
+
 
     return (
         <div id="admin" className="container">
@@ -63,14 +63,15 @@ const QuoteAdmin = () => {
                         <th className="heading" scope="col">ID</th>
                         <th className="heading" scope="col">Title</th>
                         <th className="heading" scope="col">Category</th>
-                        <th className="heading" scope="col">Quote text</th>
+                        <th className="heading" scope="col">Product text</th>
+                        <th className="heading" scope="col">Price</th>
                         <th className="heading" scope="col">Edit</th>
                         <th className="heading" scope="col">Delete</th>
                     </tr>
 
                     <tr>
 
-                        <th className="heading" scope="col"> <Link to="/add"><i className="fas fa-plus-circle"></i>   </Link>Add new quote</th>
+                        <th className="heading" scope="col"> <Link to="/add"><i className="fas fa-plus-circle"></i>   </Link>Add new product</th>
                     </tr>
 
                     <tr>
@@ -83,7 +84,7 @@ const QuoteAdmin = () => {
                 <tbody>
 
 
-                    {quoteList}
+                    {productList}
                 </tbody>
 
             </table>
@@ -91,4 +92,4 @@ const QuoteAdmin = () => {
     )
 }
 
-export default QuoteAdmin;
+export default ProductAdmin;

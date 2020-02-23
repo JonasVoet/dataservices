@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
 
-const quotesSchema = new mongoose.Schema({
+const ProductsSchema = new mongoose.Schema({
 
     title: {
         type: String,
         required: true
     },
-    quoteText: {
+    productText: {
         type: String,
         required: true
     },
-    author: {
+    price: {
         type: String,
         required: true
     },
-    quoteData: {
+    productData: {
         type: Date,
         required: true,
         default: Date.now
     },
-    quoteImage: {
+    productImage: {
         type: String,
         required: true
     },
@@ -30,4 +30,4 @@ const quotesSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Quotes', quotesSchema)
+module.exports = mongoose.model("Products", ProductsSchema)

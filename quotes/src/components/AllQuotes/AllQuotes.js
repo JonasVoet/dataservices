@@ -21,7 +21,7 @@ const AllQuotes = () => {
 
 
     useEffect(() => {
-        axios.get('https://jonasv2711quotes.azurewebsites.net/quotes/limit', {
+        axios.get('http://localhost:3000/quotes/limit', {
             params: {
                 page,
                 limit,
@@ -29,7 +29,7 @@ const AllQuotes = () => {
             }
         })
             .then(res => {
-                // console.log(res);
+                console.log(res);
                 setQuotes(res.data.results);
                 setLength(res.data.length);
             });
@@ -43,7 +43,7 @@ const AllQuotes = () => {
                 <div className="col-sm-6" key={quote._id}>
 
                     <div className="card mt-5">
-
+                        <img class="card-img-top" src={`http://localhost:3000/${quote.quoteImage}`} alt="Card image cap" />
 
 
                         <div className="card-body text-center">
@@ -52,6 +52,7 @@ const AllQuotes = () => {
                             </Link>
                             <p className="card-text"><span>“</span>{quote.quoteText}<span>”</span></p>
                             <p className="card-text"><i>- {quote.author}</i></p>
+
                             {/* <p>Date: {new Date(quote.quoteData).toLocaleString()}</p> */}
 
                         </div>
