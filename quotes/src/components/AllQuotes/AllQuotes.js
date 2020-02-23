@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Search from '../Search/Search';
 
 
 const AllQuotes = () => {
@@ -28,7 +29,7 @@ const AllQuotes = () => {
             }
         })
             .then(res => {
-                // console.log(res);
+                console.log(res);
                 setQuotes(res.data.results);
                 setLength(res.data.length);
             });
@@ -42,16 +43,17 @@ const AllQuotes = () => {
                 <div className="col-sm-6" key={quote._id}>
 
                     <div className="card mt-5">
-
+                        <img class="card-img-top" src={`http://localhost:3000/${quote.quoteImage}`} alt="Card image cap" />
 
 
                         <div className="card-body text-center">
                             <Link to={'/quotes/' + quote._id}>
                                 <h5 className="card-title">{quote.title}</h5>
                             </Link>
-                            <p className="card-text">{quote.quoteText}</p>
+                            <p className="card-text"><span>“</span>{quote.quoteText}<span>”</span></p>
                             <p className="card-text"><i>- {quote.author}</i></p>
-                            <p>Date: {new Date(quote.quoteData).toLocaleString()}</p>
+
+                            {/* <p>Date: {new Date(quote.quoteData).toLocaleString()}</p> */}
 
                         </div>
 
@@ -73,7 +75,10 @@ const AllQuotes = () => {
         <div>
             <div className="container">
 
-                <h1 className="text-center mt-5">All Quotes</h1>
+                <h1 id="allquotes" className="text-center mt-5">Welcome to our site</h1>
+                <p id="all" className="text-center">Here can see all of our quotes</p>
+
+                <Search />
 
                 <button className="button" disabled={page - 1 <= 0} onClick={previousButton}>Previus</button>
 
@@ -87,7 +92,7 @@ const AllQuotes = () => {
 
 
                 </div>
-                <p>{(page - 1) * limit + 1}-{limit + (page - 1) * limit} af {length}</p>
+                <p className="page">{(page - 1) * limit + 1}-{limit + (page - 1) * limit} af {length}</p>
             </div>
         </div>
 

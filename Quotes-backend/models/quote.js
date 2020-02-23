@@ -19,6 +19,10 @@ const quotesSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
+    quoteImage: {
+        type: String,
+        required: true
+    },
     category: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

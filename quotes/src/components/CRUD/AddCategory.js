@@ -11,7 +11,7 @@ const AddCategory = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3000/categories', { categoryName })
+        axios.post('https://jonasv2711quotes.azurewebsites.net/categories', { categoryName })
             .then(res => {
                 setRedirect(true);
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
@@ -8,23 +8,63 @@ const Add = () => {
     const [title, setTitle] = useState('');
     const [quoteText, setQuoteText] = useState('');
     const [author, setAuthor] = useState('');
+    const [categories, setCategories] = useState({});
     const [category, setCategory] = useState('');
+    const [quoteImage, setQuoteImage] = useState('');
     const [redirect, setRedirect] = useState(false);
+
+
+    useEffect(() => {
+        axios.get('https://jonasv2711quotes.azurewebsites.net/categories')
+            .then(res => {
+
+                setCategories(res.data);
+                console.log(res);
+
+            })
+    }, [])
+
+    const categoryList = categories.length ? (
+        categories.map(category => {
+            return (
+
+
+                <Fragment>
+                    <option value="" disabled hidden>Pick a category</option>
+                    <option value={category._id}>{category.categoryName}</option>
+                </Fragment>
+
+
+
+            )
+        })
+    ) : (
+            <Fragment></Fragment>
+        );
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:3000/quotes', { title, quoteText, author, category })
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('quoteText', quoteText);
+        formData.append('author', author);
+        formData.append('category', category);
+        formData.append('quoteImage', quoteImage);
+
+        axios.post('http://localhost:3000/quotes', formData)
             .then(res => {
                 setRedirect(true);
 
                 alert('You have added a quote');
             })
 
-        console.log(title);
-        console.log(quoteText);
-        console.log(author);
+        // console.log(title);
+        // console.log(quoteText);
+        // console.log(author);
+        console.log(category);
+        console.log(quoteImage);
 
     }
 
@@ -33,11 +73,13 @@ const Add = () => {
     }
 
     const handleButton = (e) => {
+
         e.preventDefault();
+
         setRedirect(true);
+
         console.log(handleButton);
     }
-
 
     return (
         <div className="container">
@@ -68,14 +110,15 @@ const Add = () => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group controlId="formBasicEmail3">
+                <Form.Group controlId="formBasicEmail4">
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} as="select">
 
-                    <Form.Control type="text" value={category} required placeholder="Category ID" onChange={(e) => setCategory(e.target.value)} />
 
-                    <Form.Text className="text-muted">
-
-                    </Form.Text>
+                        {categoryList}
+                    </select>
                 </Form.Group>
+
+
 
                 <div className="col-lg-12 text-center p-3">
                     <Button onClick={handleButton} variant="primary" type="button" className="m-2">
@@ -89,7 +132,13 @@ const Add = () => {
                 </div>
 
 
+                <input onChange={(e) => setQuoteImage(e.target.files[0])} type="file" name="quoteImage" />
+
             </Form>
+
+
+
+
 
 
         </div>

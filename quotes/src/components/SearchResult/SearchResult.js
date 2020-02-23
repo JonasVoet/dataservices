@@ -11,7 +11,7 @@ const SearchResult = () => {
     console.log(text);
 
     useEffect(() => {
-        Axios.get('http://localhost:3000/quotes/search/' + text)
+        Axios.get('https://jonasv2711quotes.azurewebsites.net/quotes/search/' + text)
             .then(res => {
                 setQuotes(res.data);
             });
@@ -23,8 +23,10 @@ const SearchResult = () => {
                 <div className="container" key={quote._id}>
 
                     <Link to={'/quotes/' + quote._id}>
-                        <h1>{quote.title}</h1>
-                        <p className="h2">{quote.quoteText}</p>
+                        <h1 className="search-result">{quote.title}</h1>
+                        <p className="search-result"><span>
+                            “</span>{quote.quoteText}<span>”</span></p>
+                        <p className="search-result">-{quote.author}</p>
 
                     </Link>
 
@@ -40,6 +42,7 @@ const SearchResult = () => {
 
     return (
         <div className="container text-center">
+            <h1 id="results" className="text-center">Search results:</h1>
             {quoteList}
         </div>
     )

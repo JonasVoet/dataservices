@@ -1,38 +1,142 @@
+/* .card {
+  background-color: gray;
+} */
+
 .App {
+  background-color: #1C1C1C;
+  min-height: 100vh !important;
+}
+
+a.nav-link {
+  color: black !important;
+}
+
+
+header.container-fluid {
+  position: relative;
+
+
+  background: url("./img/cover.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  height: 50vh;
+}
+
+.sub-box {
+  position: absolute;
+  background-color: #1C1C1C;
+  padding: 3rem;
+  color: white;
+  border-radius: 6px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+
+
+}
+
+.sub-box h2 {
+  font-size: 2.2em;
+}
+
+.sub-box p {
+  font-size: 1em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sub-box button {
+
+  background-color: #4F4F4F !important;
+  border-color: #474747;
+  color: white;
+  outline: none;
+
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sub-box input {
+  color: white !important;
+  background-color: #1C1C1C;
+  border-color: #474747;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.sub-box input:focus {
+  background-color: #1C1C1C;
+
+}
+
+h1#categorytitle {
+  color: white;
+  margin-top: 5rem;
+  margin-bottom: 0.8rem;
+  font-size: 3.2em;
+
+}
+
+h1#results {
+  color: white !important;
+  margin-top: 5rem;
+  margin-bottom: 1.2rem;
+  font-size: 2em;
+
+}
+
+h1#allquotes {
+  color: white !important;
+  margin-top: 5rem;
+  margin-bottom: 1.2rem;
+  font-size: 3.2em;
+
+}
+
+.search-result {
+
+  font-size: 1.5rem;
+  color: white;
+
+}
+
+.page {
+  padding-bottom: 2rem;
+  margin: 0 !important;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.button {
+  background-color: #1C1C1C;
+  border-color: #474747;
+  outline: none;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p#under {
+  color: white;
+  margin-bottom: 2rem;
+}
+
+p#all {
+  color: white;
+  margin-bottom: 2rem;
+
+}
+
+div#search input {
+
+  width: 40rem;
+  margin-left: 5rem !important;
+  color: white !important;
+  background-color: #1C1C1C;
+  border-color: #474747;
+}
+
+div#search button {
+  background-color: #4F4F4F;
+  color: white;
+
+}
+
+#admin {
+  background-color: white !important;
 }

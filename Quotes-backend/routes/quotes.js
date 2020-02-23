@@ -1,12 +1,48 @@
-const express = require('express');
+const express = require('../node_modules/express');
 const router = express.Router();
 const Quote = require('../models/quote');
 const Categories = require('../models/category');
 
+const multer = require('multer');
+
+// Images in database
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + file.originalname);
+
+    }
+
+});
+
+const fileFilter = (req, file, cb) => {
+    // reject a file
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+
+        cb(null, true);
+
+    } else {
+        cb(null, false);
+
+    }
+};
+
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 5
+    },
+    fileFilter: fileFilter
+});
+
 
 
 // Paginated
-router.get('/limit', paginatedResults(Quote), (req, res) => {
+router.get('/limit', paginatedResults(Quote), (_req, res) => {
     console.log("aa")
     res.json(res.paginatedResults)
 })
@@ -27,12 +63,14 @@ router.get('/:id', getQuote, (req, res) => {
 });
 
 // Creating one
-router.post('/', async (req, res) => {
+router.post('/', upload.single('quoteImage'), async (req, res) => {
+    console.log(req.body);
     const quote = new Quote({
         title: req.body.title,
         quoteText: req.body.quoteText,
         author: req.body.author,
-        category: req.body.category
+        category: req.body.category,
+        quoteImage: req.file.path
     })
     try {
         const newQuote = await quote.save();
@@ -79,15 +117,13 @@ router.delete('/:id', getQuote, async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
-})
+});
 
 // Search
 router.get('/search/:searchWord', async (req, res) => {
     let searchWord = req.params.searchWord;
 
     try {
-
-
         const quotes = await Quote.find({
             $or: [
                 { "quoteText": { "$regex": searchWord, "$options": "i" } },
@@ -129,19 +165,6 @@ function paginatedResults(model) {
 
         let results = {}
 
-        // if (endIndex < await model.countDocuments().exec()) {
-        //     results.next = {
-        //         page: page + 1,
-        //         limit: limit,
-        //     }
-        // }
-
-        // if (startIndex > 0) {
-        //     results.previous = {
-        //         page: page - 1,
-        //         limit: limit
-        //     }
-        // }
         try {
             results = {
                 length,
