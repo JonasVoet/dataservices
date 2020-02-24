@@ -21,8 +21,8 @@ const Edit = () => {
                 setTitle(res.data.title);
                 setProductText(res.data.productText);
                 setPrice(res.data.price);
-                setProductImage(res.data.productImage);
                 // setProductImage(res.data.productImage);
+
 
 
             })
@@ -37,15 +37,16 @@ const Edit = () => {
         formData.append('price', price);
         formData.append('productImage', productImage);
 
+
         axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, { title, productText, price, productImage })
             .then(() => setRedirect(true));
     }
 
-   
 
     if (redirect) {
         return <Redirect to='/admin' />
     }
+
 
     const handleButton = (e) => {
         e.preventDefault();
@@ -53,13 +54,14 @@ const Edit = () => {
         setRedirect(true);
     }
 
+
     const handleOnChange = (e) => {
 
         setProductImage(e[0])
         console.log(e);
     }
 
-   
+
 
     return (
         <div className="container">
@@ -90,11 +92,11 @@ const Edit = () => {
                     </Form.Text>
                 </Form.Group>
 
-                
+
                 <ImageUploader
                     withIcon={false}
                     withPreview={true}
-                    buttonText="Upload a Product Image"
+                    buttonText="Update product Image"
                     name="productImage"
                     type="file"
                     onChange={handleOnChange}
