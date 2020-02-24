@@ -68,7 +68,8 @@ const Add = () => {
 
     const handleOnChange = (e) => {
 
-        setProductImage(e.target.files[0])
+        setProductImage(e[0])
+        console.log(e);
     }
 
     return (

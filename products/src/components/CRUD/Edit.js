@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import ImageUploader from "react-images-upload";
 
 const Edit = () => {
 
@@ -30,8 +31,20 @@ const Edit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const formData = new formData();
+        formData.append('title', title);
+        formData.append('productText', productText);
+        formData.append('price', price);
+        formData.append('productImage', productImage);
+
         axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, { title, productText, price, productImage })
             .then(() => setRedirect(true));
+    }
+
+   
+
+    if (redirect) {
+        return <Redirect to='/admin' />
     }
 
     const handleButton = (e) => {
@@ -40,9 +53,13 @@ const Edit = () => {
         setRedirect(true);
     }
 
-    if (redirect) {
-        return <Redirect to='/admin' />
+    const handleOnChange = (e) => {
+
+        setProductImage(e[0])
+        console.log(e);
     }
+
+   
 
     return (
         <div className="container">
@@ -72,6 +89,17 @@ const Edit = () => {
 
                     </Form.Text>
                 </Form.Group>
+
+                
+                <ImageUploader
+                    withIcon={false}
+                    withPreview={true}
+                    buttonText="Upload a Product Image"
+                    name="productImage"
+                    type="file"
+                    onChange={handleOnChange}
+
+                />
 
                 {/* <input onChange={(e) => setProductImage(e.target.files[0])} type="file" name="productImage" /> */}
 

@@ -79,7 +79,7 @@ router.post('/', upload.single('productImage'), async (req, res) => {
 });
 
 // Updating One
-router.patch('/:id', getProduct, async (req, res) => {
+router.patch('/:id', upload.single('productImage'), getProduct, async (req, res) => {
     if (req.body.title != null) {
         res.product.title = req.body.title
     }
@@ -88,6 +88,9 @@ router.patch('/:id', getProduct, async (req, res) => {
     }
     if (req.body.price != null) {
         res.quote.price = req.body.price
+    }
+    if (req.body.productImage != null) {
+        res.file.path = req.body.productImage
     }
     try {
         const updatedProduct = await res.product.save()
