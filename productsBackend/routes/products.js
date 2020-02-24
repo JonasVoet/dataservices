@@ -87,11 +87,9 @@ router.patch('/:id', upload.single('productImage'), getProduct, async (req, res)
         res.product.productText = req.body.productText
     }
     if (req.body.price != null) {
-        res.quote.price = req.body.price
+        res.product.price = req.body.price
     }
-    if (req.body.productImage != null) {
-        res.file.path = req.body.productImage
-    }
+    res.product.productImage = req.file.path
     try {
         const updatedProduct = await res.product.save()
         res.json(updatedProduct)

@@ -10,7 +10,8 @@ const Edit = () => {
     const [title, setTitle] = useState('');
     const [productText, setProductText] = useState('');
     const [price, setPrice] = useState('');
-    const [productImage, setProductImage] = useState('');
+    const [productImage, setProductImage] = useState();
+    const [productImageUrl, setProductImageUrl] = useState('');
     const [redirect, setRedirect] = useState(false);
 
     const { product_id } = useParams();
@@ -21,7 +22,7 @@ const Edit = () => {
                 setTitle(res.data.title);
                 setProductText(res.data.productText);
                 setPrice(res.data.price);
-                // setProductImage(res.data.productImage);
+                setProductImageUrl(res.data.productImage);
 
 
 
@@ -35,11 +36,10 @@ const Edit = () => {
         formData.append('title', title);
         formData.append('productText', productText);
         formData.append('price', price);
-        formData.append('product_id', product_id)
         formData.append('productImage', productImage);
 
 
-        axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, { title, productText, price, productImage })
+        axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, formData)
             .then(() => setRedirect(true));
     }
 
@@ -101,6 +101,7 @@ const Edit = () => {
                     name="productImage"
                     type="file"
                     onChange={handleOnChange}
+                    defaultImages={['https://jonasv2711products.azurewebsites.net/' + productImageUrl]}
 
                 />
 
