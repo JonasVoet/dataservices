@@ -31,10 +31,11 @@ const Edit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = new formData();
+        const formData = new FormData();
         formData.append('title', title);
         formData.append('productText', productText);
         formData.append('price', price);
+        formData.append('product_id', product_id)
         formData.append('productImage', productImage);
 
 
