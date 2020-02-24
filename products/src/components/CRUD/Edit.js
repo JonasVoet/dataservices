@@ -9,7 +9,7 @@ const Edit = () => {
     const [title, setTitle] = useState('');
     const [productText, setProductText] = useState('');
     const [price, setPrice] = useState('');
-    // const [productImage, setProductImage] = useState('');
+    const [productImage, setProductImage] = useState('');
     const [redirect, setRedirect] = useState(false);
 
     const { product_id } = useParams();
@@ -20,6 +20,7 @@ const Edit = () => {
                 setTitle(res.data.title);
                 setProductText(res.data.productText);
                 setPrice(res.data.price);
+                setProductImage(res.data.productImage);
                 // setProductImage(res.data.productImage);
 
 
@@ -29,7 +30,7 @@ const Edit = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, { title, productText, price })
+        axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, { title, productText, price, productImage })
             .then(() => setRedirect(true));
     }
 
