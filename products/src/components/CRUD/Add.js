@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import ImageUploader from "react-images-upload";
 
 const Add = () => {
     const [title, setTitle] = useState('');
@@ -29,8 +30,6 @@ const Add = () => {
                     <option value="" disabled hidden>Pick a category</option>
                     <option value={category._id}>{category.categoryName}</option>
                 </Fragment>
-
-
 
             )
         })
@@ -66,6 +65,15 @@ const Add = () => {
         setRedirect(true);
         // console.log(handleButton);
     }
+
+    const handleOnChange = (e) => {
+
+        setProductImage(e.target.files[0])
+    }
+
+
+
+
 
 
 
@@ -120,8 +128,17 @@ const Add = () => {
 
                 </div>
 
+                <ImageUploader
+                    withIcon={false}
+                    withPreview={true}
+                    buttonText="Upload a Product Image"
+                    name="productImage"
+                    onChange={handleOnChange}
 
-                <input onChange={(e) => setProductImage(e.target.files[0])} type="file" name="productImage" />
+                />
+
+                {/* 
+                <input onChange={(e) => setProductImage(e.target.files[0])} type="file" name="productImage" /> */}
 
             </Form>
 

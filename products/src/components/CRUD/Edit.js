@@ -39,13 +39,9 @@ const Edit = () => {
         setRedirect(true);
     }
 
-
-
     if (redirect) {
         return <Redirect to='/admin' />
     }
-
-
 
 
     return (
