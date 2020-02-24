@@ -40,14 +40,9 @@ const Edit = () => {
         setRedirect(true);
     }
 
-
-
     if (redirect) {
         return <Redirect to='/admin' />
     }
-
-
-
 
     return (
         <div className="container">
@@ -89,7 +84,6 @@ const Edit = () => {
                         Save changes
 
   </Button>
-
                 </div>
 
 
