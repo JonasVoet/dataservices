@@ -71,13 +71,6 @@ const Add = () => {
         setProductImage(e.target.files[0])
     }
 
-
-
-
-
-
-
-
     return (
         <div className="container">
 
@@ -133,6 +126,7 @@ const Add = () => {
                     withPreview={true}
                     buttonText="Upload a Product Image"
                     name="productImage"
+                    type="file"
                     onChange={handleOnChange}
 
                 />
@@ -141,11 +135,6 @@ const Add = () => {
                 <input onChange={(e) => setProductImage(e.target.files[0])} type="file" name="productImage" /> */}
 
             </Form>
-
-
-
-
-
 
         </div>
     )
