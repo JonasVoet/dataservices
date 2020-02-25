@@ -23,9 +23,6 @@ const Edit = () => {
                 setProductText(res.data.productText);
                 setPrice(res.data.price);
                 setProductImageUrl(res.data.productImage);
-
-
-
             })
     }, [product_id]);
 
