@@ -39,7 +39,7 @@ const Edit = () => {
         axios.patch('https://jonasv2711products.azurewebsites.net/products/' + product_id, formData)
             .then(() => setRedirect(true));
 
-            alert(`You have updated a product`)
+        alert(`You have updated a product`)
     }
 
 
@@ -51,7 +51,7 @@ const Edit = () => {
     const handleButton = (e) => {
         e.preventDefault();
 
-        
+
 
         setRedirect(true);
     }
@@ -102,7 +102,7 @@ const Edit = () => {
                     name="productImage"
                     type="file"
                     onChange={handleOnChange}
-                 
+
 
                 />
 
