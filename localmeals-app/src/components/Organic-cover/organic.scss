@@ -1,0 +1,141 @@
+.info-container {
+    font-size: 2em;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 50vh;
+
+    .info-box {
+        width: 100%;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        line-height: 1.1;
+
+
+        .flex-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .img-box1 {
+            position: absolute;
+            left: -4%;
+            top: 30%;
+        }
+
+        .img-box2 {
+            position: absolute;
+            right: -12%;
+            overflow: hidden;
+            overflow: visible;
+            top: 20%;
+        }
+
+        p {
+            margin-top: 2rem;
+            font-size: 1.2em;
+        }
+
+        span {
+            color: #008600;
+            font-weight: 700;
+
+        }
+
+
+        h2 {
+            font-size: 3em;
+            padding-top: 12rem;
+            margin-top: 12rem;
+            margin-bottom: 5rem;
+            font-weight: 700;
+            width: 100%;
+            text-align: center !important;
+            position: relative;
+            color: #008600;
+        }
+
+        h2:after {
+            display: block;
+            position: absolute;
+            left: 46%;
+            bottom: -15%;
+            width: 8vw;
+            height: 2px;
+            content: "";
+            background: #008600;
+
+        }
+
+        .btn {
+            background-color: rgba(50, 50, 50, 1);
+            cursor: pointer !important;
+            color: white;
+            font-size: 0.7em;
+            height: 3.5rem;
+            width: 12rem;
+            margin-top: 1.3rem;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: rgb(0, 0, 0);
+
+            }
+        }
+
+    }
+
+
+
+    p.p1 {
+        padding-left: 1rem;
+    }
+
+    p.p2 {
+        padding-left: 1.5rem;
+    }
+
+    p.p3 {
+        padding-right: 2rem;
+    }
+
+    p.p4 {
+        padding-left: 5.7rem;
+    }
+
+    p.p5 {
+        padding-right: 20rem;
+    }
+
+}
+
+@media only screen and (min-device-width : 243px) and (max-device-width : 399px) {
+    .info-box {
+        width: 30rem !important;
+
+
+        p {
+            padding: 0 !important;
+            font-size: 1.1em;
+            margin-left: 6rem;
+        }
+
+        h2 {
+            margin: 0rem !important;
+            width: 36rem;
+            font-size: 1.5em !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem;
+        }
+
+        h2:after {
+            display: none !important;
+        }
+
+        .btn {
+            margin-left: 7rem;
+        }
+
+    }
+}

@@ -1,0 +1,65 @@
+.header {
+    position: relative;
+    color: white !important;
+    height: 6vh;
+    background-color: #fbfbfb;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+
+    i {
+        color: black;
+        font-size: 1.3em;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    a.dropdown-item {
+        font-size: 1em;
+
+
+        a.nav-link {
+            color: #57AF57 !important;
+        }
+    }
+
+
+
+    a.nav-link {
+        color: rgb(0, 0, 0) !important;
+        margin-top: 1rem;
+        padding-right: 2rem !important;
+        font-size: 2em;
+        font-weight: 700;
+        margin-top: 0.2rem;
+    }
+
+    .navbar-toggler-icon {
+
+        font-size: 1.5em;
+    }
+
+    .logo {
+        position: absolute;
+        top: -15px;
+        left: 0;
+
+        img {
+            width: 8rem;
+        }
+    }
+
+    div.dropdown-menu.show {
+        width: 21rem;
+        margin: 0 !important;
+        padding: 0 !important;
+        // text-align: center !important;
+        z-index: 100;
+        background-color: rgba(0, 0, 0, 0);
+        border: none !important;
+    }
+
+
+
+}
