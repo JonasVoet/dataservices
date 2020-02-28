@@ -1,6 +1,6 @@
 import React from 'react';
 import './organic.scss';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Spoon from '../../images/spoon.png';
 import Salmon from '../../images/salmon.png'
 

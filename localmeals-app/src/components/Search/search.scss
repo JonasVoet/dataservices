@@ -1,0 +1,27 @@
+.button-container {
+
+    margin-bottom: 5rem;
+
+
+    button {
+        padding: 0.5rem !important;
+        margin: 0 !important;
+        width: 4%;
+        height: 3.8rem;
+        padding: 10px;
+        background: #008600;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        /* Prevent double borders */
+        cursor: pointer;
+    }
+
+    input {
+        font-size: 2em;
+        width: 50% !important;
+
+    }
+
+}

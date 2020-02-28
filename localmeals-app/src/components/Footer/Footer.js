@@ -50,7 +50,7 @@ const Footer = () => {
                             <div className="widget no-box">
                                 <h5 className="widget-title">Are you hungry?<span></span></h5>
                                 <p>Organic & high taste</p>
-                                <NavLink to="shopsection" className="btn">Click me</NavLink>
+                                <NavLink to="/allproducts" className="btn">Click me</NavLink>
                             </div>
                         </div>
 

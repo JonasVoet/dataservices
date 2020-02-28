@@ -1,22 +1,10 @@
-#all {
+#category {
 
     button.button {
         width: 5%;
         font-size: 1.5em;
 
 
-    }
-
-    p.page {
-        font-size: 1.7em;
-    }
-
-    #all {
-        font-size: 2em;
-    }
-
-    #menu {
-        font-size: 4em;
     }
 
     .card {
@@ -32,13 +20,9 @@
 
     h4.card-title {
         padding-top: 1rem !important;
+        font-size: 3em !important;
+        color: #404851 !important;
 
-        a {
-
-            color: #404851 !important;
-
-
-        }
 
 
     }

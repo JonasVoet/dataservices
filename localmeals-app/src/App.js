@@ -20,6 +20,8 @@ import Footer from './components/Footer/Footer'
 // CSS
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Contact from './components/Contact/Contact';
+import Recipes from './components/Recipes/Recipes';
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/products/:product_id" component={Product} />
           <Route path="/addcategory" component={AddCategory} />
           <Route path="/add" component={Add} />
+          <Route path="/recipes" component={Recipes} />
+          <Route path="/contact" component={Contact} />
           <Route path="/allproducts" component={AllProducts} />
 
           <Route path="/Edit/:product_id" component={Edit} />

@@ -27,19 +27,12 @@ const Product = () => {
 
                 <p className="card-text">{product.productText}</p>
             </div>
-
-
         </div>
 
 
     ) : (
             <div className="text-center">Loading Product...</div>
         )
-
-
-
-
-
 
     return (
         <div className="container">

@@ -60,6 +60,47 @@
         border: none !important;
     }
 
+    button#loginbtn {
+        background-color: white !important;
+        border: none;
+        font-size: 1.8em !important;
+    }
 
 
+
+}
+
+.form-group {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 2rem;
+
+    label {
+        font-size: 2em !important;
+    }
+
+    input {
+        font-size: 1.5em;
+    }
+
+    button {
+        display: none;
+    }
+
+}
+
+button#login {
+    background-color: white !important;
+    border: 0 !important;
+    font-size: 2em !important;
+    margin-top: 2rem;
+
+    &:hover {
+        box-shadow: none !important;
+    }
+
+}
+
+.modal-footer {
+    border: none !important;
 }
