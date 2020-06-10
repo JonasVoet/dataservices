@@ -1,110 +1,116 @@
 const express = require('../node_modules/express');
 const router = express.Router();
-const Users = require('../models/user.model');
+const User = require('../models/user.model');
 
-// router.use(
-//     session({
-//       name: SESS_NAME,
-//       resave: false,
-//       saveUninitialized: false,
-//       secret: SESS_SECRET,
-//       cookie: {
-//         maxAge: SESS_LIFETIME,
-//         sameSite: true,
-//         secure: IN_PROD,
-//       },
-//     })
-//   );
 
-const redirectLogin = (req, res, next) => {
-    if (!req.session.userId) {
-      res.redirect("/login");
-    } else {
-      next();
-    }
-  };
+// GET ALL
+router.get('/admin', async (req, res) => {
 
-  const redirectHome = (req, res, next) => {
-    if (req.session.userId) {
-      res.redirect("/home");
-    } else {
-      next();
-    }
-  };
+  // console.log('GET ALL');
 
-  router.get("/:id", (req, res) => {
-    const { userId } = req.session;
-    
-    res.render('index', {userId : userId})
-  });
-
-  router.get("/home", redirectLogin, (req, res) => {
-    const user = users.find((user) => user.id === req.session.userId); 
-    res.render('./pages/home', {user: user});
-  });
-
-  router.get("/login", redirectHome, (req, res) => {
- 
-
-    res.render('./pages/login')
-  });
+  try {
+    const user = await User.find();
+    res.json(user);
   
-  
-  router.get("/register", redirectHome, (req, res) => {
+  } catch (err) {
+    res.status(500).json({message: err.message})
+  }
+});
+
+
+// GET USER BY ID
+router.get('/admin/:id', getUser, async (req, res) => {
+  res.json(res.user);
+
+});
+
+
+
+// CREATING ONE
+router.post('/admin', async (req, res) => {
+
+  console.log(req.body);
+
+  try {
+    let user = await User.findOne({email: req.body.email})
    
-  
-    res.render('./pages/register');
-  });
-  
-  
-  router.post("/login", redirectHome, (req, res) => {
-    const { email, password } = req.body;
-    if (email && password) {
-      const user = users.find(
-        (user) => user.email === email && user.password === password
-      );
-      if (user) {
-        req.session.userId = user.id;
-        return res.redirect("/home");
-      }
+
+    if (user) {
+      console.log('There has been an error making your account.')
+      return res.status(401).json({message: 'There has been an error creating your account'})
+    
+    } else {
+
+     user = new User(req.body);
+      const newUser = await user.save();
+      res.status(201).json({message: 'New user is created', newUser: newUser});
+
     }
-    res.redirect("/login");
-  });
+  } catch (error) {
+    res.status(400).json({message: "An error occurred" + error});
+  }
+});
+
+
+
+// DELETE
+router.delete('/admin/:id', getUser, async (req, res) => {
+  // console.log('DELETE');
+
+  try {
+    
+    await res.user.remove();
+    res.status(200).json({message: 'User is now deleted'})
   
+  } catch {
+    res.status(500).json({message: 'User cant be deleted - An error occurred'})
+  } 
+});
+
+
+
+// Updating One
+router.put('/admin/:id', getUser, async (req, res) => {
+
+  // console.log("PUT");
+
+  try {
+    res.user.name = req.body.name;
+    res.user.email = req.body.email;
+    res.user.password = req.body.password;
+
+    await res.user.save();
+    res.status(200).json({message: 'User is not updated', updatedUser: res.user});
   
-  router.post("/register", redirectHome, (req, res) => {
-    const { name, email, password} = req.body;
-    if (name && email && password) {
-      //TODO: validation
-      const exists = users.some((user) => user.email === email);
-      if (!exists) {
-        const user = {
-          id: users.length + 1,
-          name,
-          email,
-          password
-        };
-        users.push(user);
-        req.session.userId = user.id;
-        return res.redirect("/home");
-      }
+  } catch (error) {
+    res.status(400).json({message: 'User cant be updated - An error occurred'});
+
+  }
+});
+
+
+// MIDDLEWARE
+// FIND BY ID
+
+async function getUser(req, res, next) {
+  console.log('FIND BY ID', req.params.id);
+  let user;
+
+  try {
+    user = await User.findById(req.params.id);
+
+    if (user == null) {
+      return res.status(400).json({message: 'No user with that ID'});
     }
-    res.redirect("/register");
-  });
-  
-  
-  router.post("/logout", redirectLogin, (req, res) => {
-    req.session.destroy((err) => {
-      if (err) {
-        return res.redirect("/home");
-      }
-      res.clearCookie(SESS_NAME);
-      res.redirect("/login");
-    });
-  });
 
+  } catch (error) {
 
+    console.log(error);
+    return res.status(500).json({message: error.message});
+  }
 
-
+  res.user = user; // Put the found user in the response
+  next();
+}
 
 module.exports = router;

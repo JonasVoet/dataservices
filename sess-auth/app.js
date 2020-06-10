@@ -72,6 +72,7 @@ app.get("/", (req, res) => {
         `
         }
     `);
+
 });
 app.get("/home", redirectLogin, (req, res) => {
   const user = users.find((user) => user.id === req.session.userId); 

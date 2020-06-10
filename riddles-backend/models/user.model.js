@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-// let bcrypt = require('bcrypt');
+let bcrypt = require('bcrypt');
 
-// const SALT
+// const SALT_WORK_FACTOR = 5;
 
 const usersSchema = new mongoose.Schema({
     name: {
@@ -11,14 +11,14 @@ const usersSchema = new mongoose.Schema({
     }, 
     email: {
         type: String,
-        required: [true, 'Email is requrired'],
+        required: [true, 'Email is required'],
         trim: true, // removes spacing
-        lowercase: true,
-        index: { unique: true }
+        lowercase: true, // Saves all in lowercase letters
+        index: { unique: true } // Unique emails
     },
     password: {
         type: String,
-        required: [true, 'Password is requrired'],
+        required: [true, 'Password is required'],
         minlength: [3, 'Password need to be longer']
     },
     userData: {
@@ -26,6 +26,17 @@ const usersSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     }
-})
+});
+
+usersSchema.pre('save', async function (next) {
+    const user = this;
+    // hvis bruger er rettet men password ikke ændret så spring dette over ... next() betyder forlad denne middleware
+    if (!user.isModified('password')) return next();
+    //Lav nye password
+    const hashedPassword = await bcrypt.hash(user.password, 10)
+    //Erstat password med det krypterede password
+    user.password = hashedPassword
+    next()
+});
 
 module.exports = mongoose.model('User', usersSchema);
