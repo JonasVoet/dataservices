@@ -1,0 +1,98 @@
+.header {
+  position: relative;
+  color: white !important;
+  height: 6vh;
+  background-color: #fbfbfb;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+}
+
+.header i {
+  color: black;
+  font-size: 1.3em;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.header a.dropdown-item {
+  font-size: 1em;
+}
+
+.header a.dropdown-item a.nav-link {
+  color: #57AF57 !important;
+}
+
+.header a.nav-link {
+  color: black !important;
+  margin-top: 1rem;
+  padding-right: 2rem !important;
+  font-size: 2em;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.header .navbar-toggler-icon {
+  font-size: 1.5em;
+}
+
+.header .logo {
+  position: absolute;
+  top: -15px;
+  left: 0;
+}
+
+.header .logo img {
+  width: 8rem;
+}
+
+.header div.dropdown-menu.show {
+  width: 21rem;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0);
+  border: none !important;
+}
+
+.header button#loginbtn {
+  background-color: white !important;
+  border: none;
+  font-size: 1.8em !important;
+}
+
+.form-group {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-top: 2rem;
+}
+
+.form-group label {
+  font-size: 2em !important;
+}
+
+.form-group input {
+  font-size: 1.5em;
+}
+
+.form-group button {
+  display: none;
+}
+
+button#login {
+  background-color: white !important;
+  border: 0 !important;
+  font-size: 2em !important;
+  margin-top: 2rem;
+}
+
+button#login:hover {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+.modal-footer {
+  border: none !important;
+}
+/*# sourceMappingURL=header.css.map */

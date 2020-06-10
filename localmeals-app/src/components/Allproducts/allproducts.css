@@ -1,0 +1,41 @@
+#all button.button {
+  width: 5%;
+  font-size: 1.5em;
+}
+
+#all p.page {
+  font-size: 1.7em;
+}
+
+#all #all {
+  font-size: 2em;
+}
+
+#all #menu {
+  font-size: 4em;
+}
+
+#all .card .card-img-top {
+  width: 100%;
+  height: 15vw;
+}
+
+#all h4.card-title {
+  padding-top: 1rem !important;
+}
+
+#all h4.card-title a {
+  color: #404851 !important;
+}
+
+#all h5 {
+  margin: 0 !important;
+  font-size: 2.2em !important;
+  padding-top: 1rem;
+}
+
+#all p.card-text {
+  font-size: 2em;
+  padding-top: 1rem;
+}
+/*# sourceMappingURL=allproducts.css.map */

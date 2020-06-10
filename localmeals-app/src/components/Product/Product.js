@@ -18,9 +18,6 @@ const Product = () => {
 
     const oneProduct = product ? (
 
-
-
-
         <div className="rec-container">
 
             <img src={`https://jonasv2711products.azurewebsites.net/${product.productImage}`} alt="product" className="card-img-top" />

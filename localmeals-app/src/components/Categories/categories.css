@@ -1,0 +1,27 @@
+#category button.button {
+  width: 5%;
+  font-size: 1.5em;
+}
+
+#category .card .card-img-top {
+  width: 100%;
+  height: 15vw;
+}
+
+#category h4.card-title {
+  padding-top: 1rem !important;
+  font-size: 3em !important;
+  color: #404851 !important;
+}
+
+#category h5 {
+  margin: 0 !important;
+  font-size: 2.2em !important;
+  padding-top: 1rem;
+}
+
+#category p.card-text {
+  font-size: 2em;
+  padding-top: 1rem;
+}
+/*# sourceMappingURL=categories.css.map */

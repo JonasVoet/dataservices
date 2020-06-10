@@ -82,6 +82,8 @@ const Navigation = () => {
 
                                 </Button>
 
+                                    <NavLink className="nav-link" to="/admin">Admin</NavLink>
+
                             <Modal.Footer>
 
 

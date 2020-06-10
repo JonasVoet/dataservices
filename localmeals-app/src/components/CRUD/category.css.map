@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAC;EACN,UAAU,EAAE,OAAO;CAmBtB;;AApBD,AAGI,SAHK,CAGL,EAAE,CAAC;EACC,SAAS,EAAE,GAAG;CACjB;;AALL,AAOI,SAPK,CAOL,KAAK,CAAC;EACF,SAAS,EAAE,KAAK;CACnB;;AATL,AAWI,SAXK,CAWL,QAAQ,CAAC;EACL,SAAS,EAAE,KAAK;CACnB;;AAbL,AAeI,SAfK,CAeL,MAAM,CAAC;EACH,SAAS,EAAE,KAAK;CACnB",
+    "sources": [
+        "category.scss"
+    ],
+    "names": [],
+    "file": "category.css"
+}

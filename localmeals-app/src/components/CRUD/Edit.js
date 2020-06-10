@@ -66,7 +66,7 @@ const Edit = () => {
 
     return (
         <div id="edit" className="container">
-            <h1 className="text-center">Edit Quote</h1>
+            <h1 className="text-center">Edit Product</h1>
 
 
             <Form onSubmit={handleSubmit}>
