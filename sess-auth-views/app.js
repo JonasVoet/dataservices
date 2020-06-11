@@ -18,6 +18,12 @@ const users = [
 ];
 const app = express();
 
+// HEROKU
+let FileStore = require('session-file-store')(session);
+let fileStoreOptions = {};
+
+app.set('trust proxy', 1);
+
 
 
 // React-views
@@ -36,6 +42,7 @@ app.use(
 app.use(
   session({
     name: SESS_NAME,
+    store: new FileStore(fileStoreOptions),
     resave: false,
     saveUninitialized: false,
     secret: SESS_SECRET,

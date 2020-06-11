@@ -5,7 +5,6 @@ const User = require('../models/user.model');
 
 // GET ALL
 router.get('/admin', async (req, res) => {
-
   // console.log('GET ALL');
 
   try {

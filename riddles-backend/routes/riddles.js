@@ -35,7 +35,7 @@ router.post('/admin', async (req, res) => {
 });
 
 // Updating One
-router.patch('/:id', getRiddle, async (req, res) => {
+router.patch('/admin/:id', getRiddle, async (req, res) => {
     if (req.body.riddleText != null) {
         res.riddle.riddleText = req.body.riddleText
     }

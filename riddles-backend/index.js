@@ -29,5 +29,9 @@ app.use('/riddles', riddlesRouter);
 const usersRouter = require('./routes/users')
 app.use('/users', usersRouter);
 
+// Auth
+const authRoutes = require('./routes/auth.routes')
+app.use('/auth', authRoutes);
+
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
 

@@ -39,4 +39,12 @@ usersSchema.pre('save', async function (next) {
     next()
 });
 
+// Verification - cb = callback
+usersSchema.methods.comparePassword = function (insertedPassword, cb) {
+    bcrypt.compare(insertedPassword, this.password, function (err, isMatch) {
+     if (err) return cb(err);
+     cb(null, isMatch);
+     });
+    };
+
 module.exports = mongoose.model('User', usersSchema);
