@@ -19,7 +19,7 @@ const {
     SESS_SECRET = "ssh!quiet,it'asecret!"
     // SESS_LIFETIME = TWO_HOURS,
   } = process.env;
-//   const IN_PROD = NODE_ENV === "production";
+  const IN_PROD = NODE_ENV === "production";
 
 mongoose.connect('mongodb+srv://Jonas7598:jomani123@cluster0-jf5pc.mongodb.net/riddle?retryWrites=true&w=majority', {
     useNewUrlParser: true,
