@@ -43,7 +43,6 @@ router.post('/admin', async (req, res) => {
      user = new User(req.body);
       const newUser = await user.save();
       res.status(201).json({message: 'New user is created', newUser: newUser});
-
     }
   } catch (error) {
     res.status(400).json({message: "An error occurred" + error});
@@ -57,7 +56,6 @@ router.delete('/admin/:id', getUser, async (req, res) => {
   // console.log('DELETE');
 
   try {
-    
     await res.user.remove();
     res.status(200).json({message: 'User is now deleted'})
   

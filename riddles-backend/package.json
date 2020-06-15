@@ -1,21 +1,23 @@
 {
-    "name": "mongodb",
+    "name": "riddles-backend",
     "version": "1.0.0",
     "description": "",
+    "engines": {
+        "node": "12.11.1"
+        },
     "main": "index.js",
     "scripts": {
-        "devStart": "nodemon index.js"
+        "start": "node index.js"
     },
-    "author": "",
+    "author": "Jonas Voetmann",
     "license": "ISC",
     "dependencies": {
         "bcrypt": "^5.0.0",
+        "connect-mongo": "^3.2.0",
         "cors": "^2.8.5",
         "express": "^4.17.1",
         "express-session": "^1.17.1",
-        "mongoose": "^5.8.10"
-    },
-    "devDependencies": {
+        "mongoose": "^5.8.10",
         "dotenv": "^8.2.0",
         "nodemon": "^2.0.2"
     }

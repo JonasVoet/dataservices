@@ -2,6 +2,12 @@ const express = require('../node_modules/express');
 const router = express.Router();
 const Riddle = require('../models/riddle.model');
 
+
+// Paginated
+router.get('/limit', paginatedResults(Riddle), (req, res) => {
+    res.json(res.paginatedResults)
+});
+
 // Getting all riddles
 router.get('/', async (req, res) => {
     try {
@@ -51,7 +57,7 @@ router.patch('/admin/:id', getRiddle, async (req, res) => {
 });
 
 // Deleting one
-router.delete('/:id', getRiddle, async (req, res) => {
+router.delete('/admin/:id', getRiddle, async (req, res) => {
     try {
         await res.riddle.remove()
         res.json({message: 'Deleted Riddle'})
@@ -73,6 +79,30 @@ async function getRiddle(req, res, next) {
 
     res.riddle = riddle
     next();
+}
+
+function paginatedResults(model) {
+    return async (req, res, next) => {
+        const page = parseInt(req.query.page)
+        const limit = parseInt(req.query.limit)
+        const length = await model.countDocuments();
+
+        const startIndex = (page - 1) * limit
+        const endIndex = page * limit
+
+        let results = {}
+
+        try {
+            results = {
+                length,
+                results: await model.find().limit(limit).skip(startIndex).exec()
+            }
+            res.paginatedResults = results
+            next()
+        } catch (e) {
+            res.status(500).json({ message: e.message })
+        }
+    }
 }
 
 module.exports = router;

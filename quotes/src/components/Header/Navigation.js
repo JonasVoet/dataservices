@@ -61,10 +61,7 @@ const Navigation = () => {
                     </Nav>
                 </Navbar.Collapse>
 
-                {/* <div className="form-inline my-2 my-lg-0 justify-content-end">
-                <input ref={valueRef} onKeyDown={handleEnter} className="form-control mr-sm-2" type="Search" placeholder="Search" aria-label="Search" />
-                <button onClick={handleClick} className="btn btn-outline-sucess my-2 my-sm-0">Search</button> */}
-
+              
 
             </Navbar>
 
