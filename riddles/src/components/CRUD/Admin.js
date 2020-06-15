@@ -1,25 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import User from '../UserProfile/UserPro';
 
  const Admin = () => {
 
     const [riddles, setRiddles] = useState({});
+    
 
     useEffect(() => {
         fetchData();
     }, []);
 
     const fetchData = () => {
-        axios.get('http://localhost:5000/riddles', {withCredentials: true})
+        axios.get('https://riddles-backend.herokuapp.com/riddles', {withCredentials: true})
         .then (res => {
             setRiddles(res.data)
         });
     }
 
+    
+
     const handleDelete = (id) => {
         if (window.confirm('Sure you wanna delete this riddle?')) {
-            axios.delete('https://riddles-backend.herokuapp.com/riddles/admin/' + id)
+            axios.delete('https://riddles-backend.herokuapp.com/riddles/admin/' + id, {withCredentials: true})
             .then(res => {
                 console.log(res);
                 fetchData();
@@ -51,7 +55,7 @@ import { Link } from 'react-router-dom';
 
     return (
     <div id="admin" className="container">
-
+            <User />
             <h1 className="text-center mt-5 mb-5">ADMIN</h1>
 
             <table className="table">

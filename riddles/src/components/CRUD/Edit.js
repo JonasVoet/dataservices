@@ -6,7 +6,7 @@ import axios from 'axios';
 
  const Edit = () => {
     
-    const [title, setTitle] = useState('');
+    const [riddleText, setRiddleText] = useState('');
     const [answer, setAnswer] = useState('');
     const [redirect, setRedirect] = useState(false);
 
@@ -15,7 +15,7 @@ import axios from 'axios';
     useEffect(() => {
         axios.get('https://riddles-backend.herokuapp.com/riddles/' + riddle_id)
             .then(res => {
-                setTitle(res.data.riddleText);
+                setRiddleText(res.data.riddleText);
                 setAnswer(res.data.answer);
             
             })
@@ -24,7 +24,7 @@ import axios from 'axios';
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.patch('https://riddles-backend.herokuapp.com/riddles/' + riddle_id, {title, answer})
+        axios.patch('https://riddles-backend.herokuapp.com/riddles/admin/' + riddle_id, {riddleText, answer}, {withCredentials: true})
             .then(() => setRedirect(true));
     }
 
@@ -50,7 +50,7 @@ import axios from 'axios';
         <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formBasicEmail">
 
-                <Form.Control type="text" value={title} required placeholder="Riddle text" onChange={(e) => setTitle(e.target.value)} />
+                <Form.Control type="text" value={riddleText} required placeholder="Riddle text" onChange={(e) => setRiddleText(e.target.value)} />
 
                 <Form.Text className="text-muted">
 

@@ -31,7 +31,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log("Connected to Database Riddles"));
 
-app.use(cors({credentials:true, origin:"https://3857d4c0d0e8.ngrok.io"}));
+app.use(cors({credentials:true, origin:"https://9330bef6e8c6.ngrok.io"}));
 app.use(express.json());
 
 app.set("trust proxy", 1);

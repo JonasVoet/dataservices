@@ -1,11 +1,19 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Navbar, Nav, Button, Modal } from 'react-bootstrap';
+import Login from '../Login/Login';
 
 import { NavLink, withRouter } from 'react-router-dom';
 
 
 
+
+
  const Navigation = () => {
+
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     return (
         <Navbar className="justify-content-end" variant="light" expand={"xl"}>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -16,10 +24,37 @@ import { NavLink, withRouter } from 'react-router-dom';
                 <NavLink className="nav-link" to="/riddles">RIDDLES</NavLink>
                 <NavLink className="nav-link" to="/quizzes">QUIZZES</NavLink>
                
-                <NavLink className="nav-link" to="/signup">SIGN UP</NavLink>
-                
-                <NavLink className="nav-link" to="/login">LOGIN</NavLink>
-                <NavLink className="nav-link" to="/admin">Admin</NavLink>
+             
+
+
+                <>
+      <NavLink className="nav-link" onClick={handleShow} to="#">LOGIN</NavLink>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+    <Modal.Body><Login /></Modal.Body>
+    
+        <Modal.Footer>
+        
+        <Button className="nav-link" to="/register">
+            Sign up
+          </Button>
+          
+          <Button className="nav-link" onClick={handleClose}>
+            Close
+          </Button>
+
+         
+         
+        </Modal.Footer>
+        
+      </Modal>
+    </>
+
+
+    {/* <NavLink className="nav-link" to="/admin">ADMIN</NavLink> */}
 
                
 

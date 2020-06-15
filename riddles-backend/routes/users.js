@@ -5,7 +5,7 @@ const User = require('../models/user.model');
 
 // GET ALL
 router.get('/admin', async (req, res) => {
-  // console.log('GET ALL');
+ 
 
   try {
     const user = await User.find();
@@ -26,7 +26,7 @@ router.get('/admin/:id', getUser, async (req, res) => {
 
 
 // CREATING ONE
-router.post('/admin', async (req, res) => {
+router.post('/', async (req, res) => {
 
   console.log(req.body);
 

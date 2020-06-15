@@ -9,6 +9,8 @@ import Admin from './components/CRUD/Admin';
 import Add from './components/CRUD/Add';
 import Edit from './components/CRUD/Edit';
 import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import UserPro from './components/UserProfile/UserPro';
 
 
 // CSS
@@ -28,8 +30,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
       <Route path='/riddles' component={Riddles} />
       <Route path='/add' component={Add} />
       <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
       <Route path='/Edit/:riddle_id' component={Edit} />
+      
       <Route path='/admin' component={Admin} />
+      <Route path='/userpro/:user_id' component={UserPro} />
 
       </Switch>
       

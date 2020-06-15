@@ -15,23 +15,6 @@ import axios from 'axios';
                 setRiddles(res.data);
             })
     }, []);
-
-    // const riddlesList = riddles.length ? (
-    //     riddles.map(riddle => {
-    //         return (
-
-    //             <Fragment>
-    //                 <option value="" disabled hidden>Pick a riddle to edity</option>
-    //                 <option value={riddle._id}>{riddle.riddleText}</option>
-    //             </Fragment>
-
-    //         )
-    //     })
-    // ) : (
-
-    //     <Fragment></Fragment>
-
-    // );
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,7 +27,7 @@ import axios from 'axios';
             .then(res => {
                 setRedirect(true);
 
-                // console.log(res.data)
+                console.log(res.data)
 
                 alert('You have now added a new riddle :)');
             })
@@ -62,8 +45,6 @@ import axios from 'axios';
         console.log(handleButton);
 
     }
-
-
 
 
     return (
