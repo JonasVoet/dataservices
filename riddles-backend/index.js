@@ -16,10 +16,10 @@ const {
     ,
     NODE_ENV = "delevopment",
     SESS_NAME = "sid",
-    SESS_SECRET = "ssh!quiet,it'asecret!",
-    SESS_LIFETIME = TWO_HOURS,
+    SESS_SECRET = "ssh!quiet,it'asecret!"
+    // SESS_LIFETIME = TWO_HOURS,
   } = process.env;
-  const IN_PROD = NODE_ENV === "production";
+//   const IN_PROD = NODE_ENV === "production";
 
 mongoose.connect('mongodb+srv://Jonas7598:jomani123@cluster0-jf5pc.mongodb.net/riddle?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -78,4 +78,6 @@ const authRoutes = require('./routes/auth.routes')
 app.use('/auth', authRoutes);
 
 app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+
+
 
