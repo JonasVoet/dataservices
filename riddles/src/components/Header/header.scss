@@ -1,0 +1,49 @@
+.header {
+    position: relative;
+    color: white !important;
+    height: 8vh;
+    background-color: #3A3A3A;
+  
+    a.nav-link {
+        color: white !important;
+        margin-top: 0.5rem;
+        padding-right: 3rem !important;
+        font-size: 1.2em;
+        
+  
+    }
+
+    .navbar-toggler-icon {
+        font-size: 1em;
+    }
+
+    .logo {
+        position: absolute;
+        bottom: 1%;
+        left: 2%;
+        width: 0 !important;
+        z-index: 100;
+        
+
+        img {
+            width: 10rem;
+        }
+    }
+
+    #basic-navbar-nav {
+        width: 0 !important;
+    }
+
+    // div.dropdown-menu.show {
+    //     width: 21rem;
+    //     margin: 0 !important;
+    //     padding: 0 !important;
+    //     // text-align: center !important;
+    //     z-index: 100;
+    //     background-color: rgba(0, 0, 0, 0);
+    //     border: none !important;
+    // }
+
+
+
+}
