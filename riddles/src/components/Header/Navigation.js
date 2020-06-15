@@ -17,7 +17,9 @@ import { NavLink, withRouter } from 'react-router-dom';
                 <NavLink className="nav-link" to="/quizzes">QUIZZES</NavLink>
                
                 <NavLink className="nav-link" to="/signup">SIGN UP</NavLink>
+                
                 <NavLink className="nav-link" to="/login">LOGIN</NavLink>
+                <NavLink className="nav-link" to="/admin">Admin</NavLink>
 
                
 

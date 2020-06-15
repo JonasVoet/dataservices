@@ -58,10 +58,6 @@ import './main.scss';
                 </div>
 
             </div>
-
-            
-
-
         </div>
     )
 }

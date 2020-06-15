@@ -40,7 +40,7 @@ import axios from 'axios';
         formData.append('riddleText', riddleText);
         formData.append('answer', answer);
 
-        axios.post('http://localhost:5000/riddles/admin', {riddleText, answer}, {withCredentials: true})
+        axios.post('https://riddles-backend.herokuapp.com/riddles/admin', {riddleText, answer}, {withCredentials: true})
             .then(res => {
                 setRedirect(true);
 
