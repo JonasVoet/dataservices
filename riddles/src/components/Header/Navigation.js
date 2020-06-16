@@ -38,9 +38,9 @@ import { NavLink, withRouter } from 'react-router-dom';
     
         <Modal.Footer>
         
-        <Button className="nav-link" to="/register">
+        <NavLink className="nav-link" to="/register">
             Sign up
-          </Button>
+          </NavLink>
           
           <Button className="nav-link" onClick={handleClose}>
             Close

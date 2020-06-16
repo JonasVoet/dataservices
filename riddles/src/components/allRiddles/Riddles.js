@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import Cover from '../Cover/Cover';
+import './riddles.scss';
 
  const Riddles = () => {
      
@@ -38,24 +38,20 @@ import Cover from '../Cover/Cover';
             return (
            
 
-         <div className="col-sm-6" key={riddle._id}>
+         <div id="all-riddles" className="col-sm-6" key={riddle._id}>
 
                     <div className="card mt-5">
                       
 
 
                         <div className="card-body text-center">
-                            <Link to={'/riddles/' + riddle._id}>
+                           
                                 <h5 className="card-title">{riddle.riddleText}</h5>
-                            </Link>
-                            <p className="card-text"><span>“</span>{riddle.answer}<span>”</span></p>
+                           
+                            <p className="card-text">{riddle.answer}</p>
                             <p className="card-text"><i>- {riddle.riddleData}</i></p>
 
-                          
-
                         </div>
-
-
                     </div>
                 </div>
 
@@ -77,14 +73,7 @@ import Cover from '../Cover/Cover';
     return (
         <div>
             <Cover />
-            <div className="container">
-
-                
-
-        
-                <p id="all" className="text-center">Here can see all of our riddles</p>
-
-         
+            <div className="container">         
 
                 <button className="button" disabled={page - 1 <= 0} onClick={previousButton}>Previus</button>
 

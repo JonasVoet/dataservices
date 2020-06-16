@@ -67,13 +67,7 @@ import axios from 'axios';
                     <Form.Control type="text" value={answer} required placeholder="Answer" onChange={(e) => setAnswer(e.target.value)} />
                 </div>
 
-                {/* <Form.Group controlId="formBasicEmail4">
-                    <select value={riddles} onChange={(e) => setRiddles(e.target.value)} as="select">
-
-
-                        {riddlesList}
-                    </select>
-                </Form.Group> */}
+               
 
 
                 <div className="col-lg-12 text-center p-3">

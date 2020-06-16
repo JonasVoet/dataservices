@@ -7,6 +7,7 @@ import User from '../UserProfile/UserPro';
 
     const [riddles, setRiddles] = useState({});
     
+    
 
     useEffect(() => {
         fetchData();
@@ -29,6 +30,15 @@ import User from '../UserProfile/UserPro';
                 fetchData();
             });
         }
+    }
+
+    const handleLogout = () => {
+      
+            axios.post('https://riddles-backend.herokuapp.com/auth/logout')
+            .then(res => {
+                console.log(res);
+            });
+        
     }
 
     const riddlesList = riddles.length ? (
@@ -55,8 +65,12 @@ import User from '../UserProfile/UserPro';
 
     return (
     <div id="admin" className="container">
-            <User />
+         
             <h1 className="text-center mt-5 mb-5">ADMIN</h1>
+
+            <User />
+
+            <button onClick={handleLogout}>Logout</button>
 
             <table className="table">
                 <thead>

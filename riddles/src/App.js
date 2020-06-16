@@ -34,7 +34,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
       <Route path='/Edit/:riddle_id' component={Edit} />
       
       <Route path='/admin' component={Admin} />
-      <Route path='/userpro/:user_id' component={UserPro} />
+      {/* <Route path='/userpro/:user_id' component={UserPro} /> */}
 
       </Switch>
       
