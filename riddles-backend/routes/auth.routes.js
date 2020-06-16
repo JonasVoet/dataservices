@@ -31,6 +31,10 @@ router.post('/login', async (req, res) => {
 // GET http://localhost:3000/auth/logout
 
 router.post('/logout', (req, res) => {
+    if (req.session.userId === undefined) {
+        return res.status(404).json({message: "Logout failed - you are not logged in"});
+    }
+
     req.session.destroy((err) => {
         if (err) {
             return res.status(404).json({message: "Logout failed - try again"})
@@ -44,17 +48,7 @@ router.post('/logout', (req, res) => {
 // GET http://localhost:3000/auth/loggedin
 
 router.get('/loggedin', async (req, res) => {
-    // Save userId in cookie. If logged in
-    if (req.session.userId) {
-        // if logged in
-        return res.status(200).json({message: 'Login still active'}) // route
-    
-    } else {
-        // if there is no login/session
-        return res.status(401).json({message: 'Login does not exist or expired'})
-
-    }
-
+    return res.status(200).json({message: req.session.userId !== undefined});
 });
 
 module.exports = router;

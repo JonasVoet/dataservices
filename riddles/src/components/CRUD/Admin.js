@@ -33,12 +33,8 @@ import User from '../UserProfile/UserPro';
     }
 
     const handleLogout = () => {
-      
-            axios.post('https://riddles-backend.herokuapp.com/auth/logout')
-            .then(res => {
-                console.log(res);
-            });
-        
+
+            axios.post('https://riddles-backend.herokuapp.com/auth/logout', {}, {withCredentials: true});
     }
 
     const riddlesList = riddles.length ? (

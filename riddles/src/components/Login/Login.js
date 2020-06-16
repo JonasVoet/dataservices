@@ -19,8 +19,6 @@ import { Redirect } from 'react-router-dom';
 
             console.log(res);
             setRedirect(true);
-
-
         })
     }
 
@@ -28,7 +26,6 @@ import { Redirect } from 'react-router-dom';
       return <Redirect to='/admin' />
   }
     
-
     return (
 
         <Form onSubmit={handleSubmit}>
