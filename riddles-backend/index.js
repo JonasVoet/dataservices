@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 
 // Sessions
 const session = require("express-session");
-const TWO_HOURS = 1000 * 60 * 60 * 2;
 // Store session in mongo
 const MongoStore = require('connect-mongo')(session);
 
@@ -31,7 +30,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log("Connected to Database Riddles"));
 
-app.use(cors({credentials:true, origin:"https://6bcff3d5f366.ngrok.io"}));
+app.use(cors({credentials:true, origin:"https://21f85feceac1.ngrok.io"}));
 app.use(express.json());
 
 app.set("trust proxy", 1);

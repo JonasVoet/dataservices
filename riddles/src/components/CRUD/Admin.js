@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import User from '../UserProfile/UserPro';
 
  const Admin = () => {
 
     const [riddles, setRiddles] = useState({});
+    const [redirect, setRedirect] = useState(false);
     
     
 
@@ -16,8 +17,13 @@ import User from '../UserProfile/UserPro';
     const fetchData = () => {
         axios.get('https://riddles-backend.herokuapp.com/riddles', {withCredentials: true})
         .then (res => {
-            setRiddles(res.data)
+            setRiddles(res.data);
+            
         });
+    }
+
+    if (redirect) {
+        return <Redirect to='/' />
     }
 
     
@@ -33,8 +39,21 @@ import User from '../UserProfile/UserPro';
     }
 
     const handleLogout = () => {
+        
+        const r = window.confirm('Sure you wanna logout?');
+
+        if (r == true) {
 
             axios.post('https://riddles-backend.herokuapp.com/auth/logout', {}, {withCredentials: true});
+
+            // window.confirm('Sure you wanna logout?');
+            setRedirect(true);
+
+        } else {
+            return;
+        }
+
+            
     }
 
     const riddlesList = riddles.length ? (

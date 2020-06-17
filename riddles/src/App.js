@@ -35,12 +35,13 @@ axios.interceptors.response.use(response => {
           <Route path='/riddles' component={Riddles} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+           <Route path='/register' component={Register} />
           <LoggedinCheck>
-            <Route path='/admin' component={Admin} />
+            <Route path='/admin/:userName' component={Admin} />
             <Route path='/Edit/:riddle_id' component={Edit} />
             <Route path='/add' component={Add} />
           </LoggedinCheck>
-          {/* <Route path='/userpro/:user_id' component={UserPro} /> */}
+          
         </Switch>      
       </div>
     </HashRouter>
@@ -59,7 +60,7 @@ const LoggedinCheck = ({children}) => {
           setTimeout(() => {
             history.push("/"); // Redirect
             setLoading(false);
-          }, 2000);
+          }, 9000);
         } else {
           setLoading(false);
         
@@ -68,7 +69,7 @@ const LoggedinCheck = ({children}) => {
   });
   return (
     <div>
-      {loading ? <h1>LOADING..</h1> : children} 
+      {loading ? <h1>LOADING...</h1> : children} 
     </div>
   )
 }

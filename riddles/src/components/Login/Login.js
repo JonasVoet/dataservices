@@ -9,6 +9,7 @@ import { Redirect } from 'react-router-dom';
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
+    const [name, setName] = useState({});
 
     const handleSubmit = (e) => {
         
@@ -16,14 +17,14 @@ import { Redirect } from 'react-router-dom';
 
         axios.post('https://riddles-backend.herokuapp.com/auth/login', {email, password}, {withCredentials:true}) 
         .then(res => {
-
-            console.log(res);
+            setName(res.data.name);
+            console.log(res.data.name);
             setRedirect(true);
         })
     }
 
     if (redirect) {
-      return <Redirect to='/admin' />
+      return <Redirect to={'/admin/' + name} />
   }
     
     return (
