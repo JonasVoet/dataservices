@@ -42,7 +42,7 @@ import User from '../UserProfile/UserPro';
         
         const r = window.confirm('Sure you wanna logout?');
 
-        if (r == true) {
+        if (r === true) {
 
             axios.post('https://riddles-backend.herokuapp.com/auth/logout', {}, {withCredentials: true});
 
@@ -73,7 +73,7 @@ import User from '../UserProfile/UserPro';
         })
     ) : (
 
-        <div className="text-center">No riddles to show</div>
+        <section className="text-center">No riddles to show</section>
     );
 
 

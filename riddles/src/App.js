@@ -15,13 +15,13 @@ import axios from "axios";
 // CSS
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-//Fanger alle fejl fra backend (4xx-5xx eller ikke 2xx) og viser en alert, eller måske bootstrap popup i fremtiden
-axios.interceptors.response.use(response => {
-  return response; //Hvis der ikke er fejl, returner vi bare det normale response
-}, error => {
-  alert(error.response.data.message);
-  return Promise.reject(error);
-});
+// //Fanger alle fejl fra backend (4xx-5xx eller ikke 2xx) og viser en alert, eller måske bootstrap popup i fremtiden
+// axios.interceptors.response.use(response => {
+//   return response; //Hvis der ikke er fejl, returner vi bare det normale response
+// }, error => {
+//   alert(error.response.data.message);
+//   return Promise.reject(error);
+// });
 
 
  const App = () => {
@@ -58,7 +58,7 @@ const LoggedinCheck = ({children}) => {
       .then(response => {
         if(!response.data.message){
           setTimeout(() => {
-            history.push("/"); // Redirect
+            history.push('/'); // Redirect
             setLoading(false);
           }, 9000);
         } else {

@@ -30,7 +30,7 @@ const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log("Connected to Database Riddles"));
 
-app.use(cors({credentials:true, origin:"https://21f85feceac1.ngrok.io"}));
+app.use(cors({credentials:true, origin:"https://41e071f81f34.ngrok.io"}));
 app.use(express.json());
 
 app.set("trust proxy", 1);
@@ -70,7 +70,7 @@ app.use('/riddles', riddlesRouter);
 
 // Users
 const usersRouter = require('./routes/users')
-app.use('/admin/users', usersRouter);
+app.use('/users', usersRouter);
 
 // Auth
 const authRoutes = require('./routes/auth.routes')

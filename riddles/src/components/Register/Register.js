@@ -14,7 +14,7 @@ import { Form, Button } from 'react-bootstrap';
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('https://riddles-backend.herokuapp.com/admin/users', {name, email, password}, {withCredentials:true})
+        axios.post('https://riddles-backend.herokuapp.com/users', {name, email, password}, {withCredentials:true})
         .then(res => {
             console.log(res);
             setRedirect(true);
