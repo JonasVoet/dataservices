@@ -85,7 +85,7 @@ import User from '../UserProfile/UserPro';
 
             <User />
 
-            <button onClick={handleLogout}>Logout</button>
+            <button className="btn.btn-light mb-4" onClick={handleLogout}>Logout</button>
 
             <table className="table">
                 <thead>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, CardDeck } from 'react-bootstrap';
+import { Card, CardGroup, Spinner } from 'react-bootstrap';
 import './main.scss';
 
 
@@ -11,33 +11,44 @@ import './main.scss';
     useEffect(() => {
         axios.get('https://riddles-backend.herokuapp.com/riddles')
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setRiddles(res.data);
             })
 
     }, []);
 
     const riddlesList = riddles.length ? (
-        riddles.slice(0,5).map(riddle => {
+        riddles.slice(0,6).map(riddle => {
             return (
 
-    <Card>
-    <Card.Body>
-            <Card.Title>{riddle.riddleText}</Card.Title>
-      <Card.Text>
-        {riddle.answer}
-      </Card.Text>
-    </Card.Body>
-    <Card.Footer>
-            <small className="text-muted">{riddle.riddleData}</small>
-    </Card.Footer>
-  </Card>
+                <div className="col-lg-6">
+                <Card>
+                  <Card.Body>
+                      <Card.Title>
+                         {riddle.riddleText}
+                      </Card.Title>
 
+                      <Card.Text>
+                        {riddle.answer}
+                      </Card.Text>
+                      
+                </Card.Body> 
+
+                <Card.Footer>
+                <small className="text-muted">{riddle.riddleData}</small>
+                </Card.Footer> 
+               </Card>
+               </div>
             )
         })
     ) : (
 
-        <div className="text-center">No riddles to show</div>
+        <div className="container text-center">
+            <div className="text-center"><Spinner className="text-center" animation="border" role="status">
+            <span className="sr-only text-center">Loading...</span>
+          </Spinner></div>
+        </div>
+
         
     );
 
@@ -48,16 +59,17 @@ import './main.scss';
     return (
         <div id="main" className="container">
 
-            <div className="row">
-
-                <div className="col-lg-12">
-                <h2>Top 5 Riddles</h2>
-            <CardDeck>
+        
+                <h2>Top 6 Riddles</h2>
+                <div className="row">
+            <CardGroup>
+                
                 {riddlesList}
-            </CardDeck>
-                </div>
-
+              
+            </CardGroup>
             </div>
+            
+           
         </div>
     )
 }

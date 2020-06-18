@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { HashRouter, Route, Switch, useHistory } from 'react-router-dom';
+import { HashRouter, Route, Switch, useHistory, Redirect } from 'react-router-dom';
+import axios from "axios";
 
 // JS IMPORTS
 import Home from './components/Home/Home';
@@ -10,12 +11,14 @@ import Add from './components/CRUD/Add';
 import Edit from './components/CRUD/Edit';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import axios from "axios";
+import ErrorSite from './components/ErrorSite/Error';
+
+
 
 // CSS
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-// //Fanger alle fejl fra backend (4xx-5xx eller ikke 2xx) og viser en alert, eller måske bootstrap popup i fremtiden
+// Fanger alle fejl fra backend (4xx-5xx eller ikke 2xx) og viser en alert, eller måske bootstrap popup i fremtiden
 // axios.interceptors.response.use(response => {
 //   return response; //Hvis der ikke er fejl, returner vi bare det normale response
 // }, error => {
@@ -35,12 +38,15 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
           <Route path='/riddles' component={Riddles} />
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
-           <Route path='/register' component={Register} />
+           <Route path='/errorsite' component={ErrorSite} /> 
+    
           <LoggedinCheck>
-            <Route path='/admin/:userName' component={Admin} />
+            <Route path={['/admin/:userName', '/admin']} component={Admin} />
             <Route path='/Edit/:riddle_id' component={Edit} />
             <Route path='/add' component={Add} />
           </LoggedinCheck>
+
+       
           
         </Switch>      
       </div>
@@ -60,7 +66,7 @@ const LoggedinCheck = ({children}) => {
           setTimeout(() => {
             history.push('/'); // Redirect
             setLoading(false);
-          }, 9000);
+          }, 5000);
         } else {
           setLoading(false);
         
@@ -69,7 +75,7 @@ const LoggedinCheck = ({children}) => {
   });
   return (
     <div>
-      {loading ? <h1>LOADING...</h1> : children} 
+      {loading ? <ErrorSite /> : children} 
     </div>
   )
 }

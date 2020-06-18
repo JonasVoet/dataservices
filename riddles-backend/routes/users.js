@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 
     if (user) {
       console.log('There has been an error making your account.')
-      return res.status(401).json({message: 'There has been an error creating your account'})
+      return res.status(400).json({message: 'There has been an error creating your account'})
     
     } else {
 

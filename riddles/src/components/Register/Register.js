@@ -42,7 +42,7 @@ import { Form, Button } from 'react-bootstrap';
     </Form.Text>
   </Form.Group>
 
-  <Form.Group controlId="formBasicEmail">
+  <Form.Group controlId="formBasicName">
    
     <Form.Control value={email} type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}/>
     <Form.Text className="text-muted">

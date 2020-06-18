@@ -59,10 +59,14 @@ import './riddles.scss';
 
             )
         })
-    ) : (
+    ) : (    
+            <div className="container text-center">
             <div className="text-center"><Spinner className="text-center" animation="border" role="status">
             <span className="sr-only text-center">Loading...</span>
           </Spinner></div>
+        </div>
+
+
         );
 
 
