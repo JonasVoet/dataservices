@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEI,YAFQ,CAER,MAAM,AAAA,OAAO,CAAC;EACV,UAAU,EAAE,IAAI;CACnB;;AAJL,AAMI,YANQ,CAMR,GAAG,AAAA,YAAY,CAAC;EACZ,WAAW,EAAE,YAAY;CAC5B;;AARL,AAYI,YAZQ,CAYR,EAAE,AAAA,WAAW,CAAC;EACV,KAAK,EAAE,kBAAkB;CAC5B;;AAGL,AAAA,MAAM,AAAA,OAAO,CAAC;EACV,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "riddles.scss"
+    ],
+    "names": [],
+    "file": "riddles.css"
+}

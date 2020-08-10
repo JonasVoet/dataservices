@@ -1,0 +1,19 @@
+.container-fluid {
+  background-color: #C95957;
+  height: 350px;
+}
+
+.container-fluid h1, .container-fluid h3 {
+  color: white;
+}
+
+.container-fluid h1.title {
+  padding-top: 5.7rem;
+  font-size: 3em;
+}
+
+.container-fluid h3.under-title {
+  font-size: 1.3em;
+  padding-top: 0.2rem;
+}
+/*# sourceMappingURL=cover.css.map */

@@ -1,0 +1,16 @@
+#all-riddles button.button {
+  margin-top: 5rem;
+}
+
+#all-riddles div.all-riddles {
+  padding-top: 0 !important;
+}
+
+#all-riddles h5.card-title {
+  color: #FFCF40 !important;
+}
+
+button.button {
+  margin-top: 3rem;
+}
+/*# sourceMappingURL=riddles.css.map */

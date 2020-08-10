@@ -1,0 +1,36 @@
+.progress {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  position: relative;
+  margin: 15px 22rem;
+  height: 50px;
+  width: 400px;
+}
+
+p#error {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+.progress-done {
+  background: -webkit-gradient(linear, right top, left top, from(#F2709C), to(#FF9472));
+  background: linear-gradient(to left, #F2709C, #FF9472);
+  -webkit-box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+          box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+  border-radius: 20px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  width: 0;
+  -webkit-transition: 5s ease 0.3s;
+  transition: 5s ease 0.3s;
+}
+/*# sourceMappingURL=error.css.map */
