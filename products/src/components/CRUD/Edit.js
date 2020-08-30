@@ -11,7 +11,7 @@ const Edit = () => {
     const [productText, setProductText] = useState('');
     const [price, setPrice] = useState('');
     const [productImage, setProductImage] = useState();
-    // const [productImageUrl, setProductImageUrl] = useState('');
+    
     const [redirect, setRedirect] = useState(false);
 
     const { product_id } = useParams();
@@ -50,9 +50,6 @@ const Edit = () => {
 
     const handleButton = (e) => {
         e.preventDefault();
-
-
-
         setRedirect(true);
     }
 
@@ -111,12 +108,12 @@ const Edit = () => {
                 <div className="col-lg-12 text-center p-3">
                     <Button onClick={handleButton} variant="primary" type="button" className="m-2">
                         Regret
-  </Button>
+                            </Button>
 
                     <Button variant="primary" type="submit">
                         Save changes
 
-  </Button>
+                    </Button>
                 </div>
 
 

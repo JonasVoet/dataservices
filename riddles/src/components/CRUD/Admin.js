@@ -46,14 +46,11 @@ import User from '../UserProfile/UserPro';
 
             axios.post('https://riddles-backend.herokuapp.com/auth/logout', {}, {withCredentials: true});
 
-            // window.confirm('Sure you wanna logout?');
             setRedirect(true);
 
         } else {
             return;
-        }
-
-            
+        }      
     }
 
     const riddlesList = riddles.length ? (
