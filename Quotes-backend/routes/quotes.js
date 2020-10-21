@@ -30,7 +30,6 @@ const fileFilter = (req, file, cb) => {
     }
 };
 
-
 const upload = multer({
     storage: storage,
     limits: {
@@ -39,11 +38,8 @@ const upload = multer({
     fileFilter: fileFilter
 });
 
-
-
 // Paginated
 router.get('/limit', paginatedResults(Quote), (_req, res) => {
-    console.log("aa")
     res.json(res.paginatedResults)
 })
 

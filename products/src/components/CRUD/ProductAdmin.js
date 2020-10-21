@@ -19,7 +19,7 @@ const ProductAdmin = () => {
     }
 
     const handleDelete = (id) => {
-        if (window.confirm('Sure you wanna delete this producy?')) {
+        if (window.confirm('Sure you wanna delete this product?')) {
             axios.delete('https://jonasv2711products.azurewebsites.net/products/' + id)
                 .then(res => {
                     console.log(res);

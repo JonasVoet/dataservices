@@ -123,7 +123,7 @@ const Add = () => {
                 <div className="col-lg-12 text-center p-3">
                     <Button onClick={handleButton} variant="primary" type="button" className="m-2">
                         Regret
-  </Button>
+                    </Button>
 
                     <Button variant="primary" type="submit">
                         Save Quote
@@ -135,12 +135,6 @@ const Add = () => {
                 <input onChange={(e) => setQuoteImage(e.target.files[0])} type="file" name="quoteImage" />
 
             </Form>
-
-
-
-
-
-
         </div>
     )
 }

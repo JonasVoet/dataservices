@@ -38,9 +38,6 @@ import axios from 'axios';
         return <Redirect to='/admin' />
     }
 
-
-
-
     return (
 
         <div className="container">

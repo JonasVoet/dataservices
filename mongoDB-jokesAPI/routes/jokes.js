@@ -113,19 +113,6 @@ function paginatedResults(model) {
 
         let results = {}
 
-        // if (endIndex < await model.countDocuments().exec()) {
-        //     results.next = {
-        //         page: page + 1,
-        //         limit: limit,
-        //     }
-        // }
-
-        // if (startIndex > 0) {
-        //     results.previous = {
-        //         page: page - 1,
-        //         limit: limit
-        //     }
-        // }
         try {
             results = {
                 length,
